@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package airport_p3.logica;
 
 import java.io.Serializable;
 import java.util.Date;

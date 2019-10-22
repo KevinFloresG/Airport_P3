@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package airport_p3.logica;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,34 +22,40 @@ import javax.persistence.Table;
  * @author Kevin Flores
  */
 @Entity
-@Table(name = "formapago")
+@Table(name = "pais")
 @NamedQueries({
-    @NamedQuery(name = "Formapago.findAll", query = "SELECT f FROM Formapago f")})
-public class Formapago implements Serializable {
+    @NamedQuery(name = "Pais.findAll", query = "SELECT p FROM Pais p")})
+public class Pais implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "idFormaPago")
-    private String idFormaPago;
+    @Column(name = "idPais")
+    private String idPais;
+    @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "formapago")
-    private List<Reserva> reservaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pais")
+    private List<Ciudad> ciudadList;
 
-    public Formapago() {
+    public Pais() {
     }
 
-    public Formapago(String idFormaPago) {
-        this.idFormaPago = idFormaPago;
+    public Pais(String idPais) {
+        this.idPais = idPais;
     }
 
-    public String getIdFormaPago() {
-        return idFormaPago;
+    public Pais(String idPais, String nombre) {
+        this.idPais = idPais;
+        this.nombre = nombre;
     }
 
-    public void setIdFormaPago(String idFormaPago) {
-        this.idFormaPago = idFormaPago;
+    public String getIdPais() {
+        return idPais;
+    }
+
+    public void setIdPais(String idPais) {
+        this.idPais = idPais;
     }
 
     public String getNombre() {
@@ -60,29 +66,29 @@ public class Formapago implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<Reserva> getReservaList() {
-        return reservaList;
+    public List<Ciudad> getCiudadList() {
+        return ciudadList;
     }
 
-    public void setReservaList(List<Reserva> reservaList) {
-        this.reservaList = reservaList;
+    public void setCiudadList(List<Ciudad> ciudadList) {
+        this.ciudadList = ciudadList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idFormaPago != null ? idFormaPago.hashCode() : 0);
+        hash += (idPais != null ? idPais.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Formapago)) {
+        if (!(object instanceof Pais)) {
             return false;
         }
-        Formapago other = (Formapago) object;
-        if ((this.idFormaPago == null && other.idFormaPago != null) || (this.idFormaPago != null && !this.idFormaPago.equals(other.idFormaPago))) {
+        Pais other = (Pais) object;
+        if ((this.idPais == null && other.idPais != null) || (this.idPais != null && !this.idPais.equals(other.idPais))) {
             return false;
         }
         return true;
@@ -90,7 +96,7 @@ public class Formapago implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Formapago[ idFormaPago=" + idFormaPago + " ]";
+        return "logica.Pais[ idPais=" + idPais + " ]";
     }
     
 }
