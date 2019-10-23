@@ -31,18 +31,6 @@ public class Dao_Pais {
         this.db = db;
     }
     
-    public Pais get(String id) throws Exception {
-        String sql = "select * "
-                + "from Pais p "
-                + "where p.idPais='%s'";
-        sql = String.format(sql, id);
-        ResultSet rs = db.executeQuery(sql);
-        if (rs.next()) {
-            return pais(rs);
-        } else {
-            throw new Exception("País no Existe");
-        }
-    }
 
     public void delete(Pais p) throws Exception {
         String sql = "delete from Pais where id='%s'";
@@ -76,17 +64,4 @@ public class Dao_Pais {
     }
 
 
-    private Pais pais(ResultSet rs) {
-        try {
-            Pais p = new Pais();
-            p.setIdPais(rs.getString("idPais"));
-            p.setNombre(rs.getString("nombre"));
-            return p;
-        } catch (SQLException ex) {
-            return null;
-        }
-    }
-
-    public void close() {
-    }
 }
