@@ -5,6 +5,8 @@
  */
 package airport_p3;
 
+import airport_p3.datos.Database_relation;
+
 /**
  *
  * @author Kevin Flores
@@ -16,7 +18,7 @@ public class Airport_P3 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //
+        Database_relation db = new Database_relation();
     }
     
 }
