@@ -5,7 +5,9 @@
  */
 package airport_p3;
 
+import airport_p3.datos.Dao_Tiquete;
 import airport_p3.datos.Database_relation;
+import airport_p3.logica.Tiquete;
 
 /**
  *
@@ -18,9 +20,6 @@ public class Airport_P3 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Database_relation r = new Database_relation();
-        String x = "insert into FormaPago (idFormaPago, nombre) values('003','edito')";
-        System.out.println(r.executeUpdate(x));
     }
     
 }

@@ -6,6 +6,7 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -51,7 +52,9 @@ public class Reserva implements Serializable {
 
     public Reserva() {
     }
-
+    
+    public Reserva(ResultSet s){}
+    
     public Reserva(Integer idReserva) {
         this.idReserva = idReserva;
     }

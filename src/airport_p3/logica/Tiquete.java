@@ -6,6 +6,10 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,7 +53,7 @@ public class Tiquete implements Serializable {
         this.idTiquete = idTiquete;
         this.asiento = asiento;
     }
-
+    
     public Integer getIdTiquete() {
         return idTiquete;
     }
