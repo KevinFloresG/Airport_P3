@@ -5,10 +5,6 @@
  */
 package airport_p3;
 
-import airport_p3.datos.Dao_Tiquete;
-import airport_p3.datos.Database_relation;
-import airport_p3.logica.Tiquete;
-
 /**
  *
  * @author Kevin Flores
