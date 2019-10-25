@@ -14,7 +14,8 @@ import java.util.List;
 
  
 public class Dao_FormaPago {
-        Database_relation db;
+    
+    Database_relation db;
     
     public Dao_FormaPago(){
         db= new Database_relation();
@@ -31,8 +32,6 @@ public class Dao_FormaPago {
     public Dao_FormaPago(Database_relation db) {
         this.db = db;
     }
-
-  
     
     public void delete(Formapago p) throws Exception{
         String sql="delete from FormaPago where idFormaPago='%s'";
@@ -54,9 +53,9 @@ public class Dao_FormaPago {
     }
 
     public void update(Formapago p) throws Exception{
-        String sql="update FormaPago set idFormaPago='%s',nombre='%s' "+
+        String sql="update FormaPago set nombre='%s' "+
                 "where idFormaPago='%s'";
-        sql=String.format(sql,p.getIdFormaPago(),p.getNombre());
+        sql=String.format(sql,p.getNombre(), p.getIdFormaPago());
         
         int count=db.executeUpdate(sql);
         if (count==0){

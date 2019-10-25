@@ -50,8 +50,8 @@ public class Dao_Avion {
 
     public void update(Avion p) throws Exception {
         String sql = "update Avion set tipoAvion='%s'"
-                + "where idPais='%s'";
-        sql = String.format(sql, p.getIdAvion(), p.getTipoavion().getIdTipoAvion());
+                + "where idAvion='%s'";
+        sql = String.format(sql,p.getTipoavion().getIdTipoAvion(),p.getIdAvion());
 
         int count = db.executeUpdate(sql);
         if (count == 0) {

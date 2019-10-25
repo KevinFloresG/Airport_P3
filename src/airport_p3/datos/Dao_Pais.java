@@ -1,10 +1,6 @@
 package airport_p3.datos;
 
 import airport_p3.logica.Pais;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -31,9 +27,8 @@ public class Dao_Pais {
         this.db = db;
     }
     
-
     public void delete(Pais p) throws Exception {
-        String sql = "delete from Pais where id='%s'";
+        String sql = "delete from Pais where idPais='%s'";
         sql = String.format(sql, p.getIdPais());
         int count = db.executeUpdate(sql);
         if (count == 0) {
@@ -62,6 +57,4 @@ public class Dao_Pais {
             throw new Exception("País no existe");
         }
     }
-
-
 }

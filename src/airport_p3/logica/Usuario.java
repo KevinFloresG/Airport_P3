@@ -6,6 +6,7 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -69,7 +70,8 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(String idUsuario, String nombre, String contraseña, String apellido, String correoElectronico, Date fechaNacimiento, String direccion, int telefonoCelular) {
+    public Usuario(String idUsuario, String nombre, String contraseña, String apellido, String correoElectronico, 
+            Date fechaNacimiento, String direccion, int telefonoTrabajo, int telefonoCelular) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -78,6 +80,7 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
         this.telefonoCelular = telefonoCelular;
+        this.telefonoTrabajo = telefonoTrabajo;
     }
 
     public String getIdUsuario() {
@@ -114,6 +117,11 @@ public class Usuario implements Serializable {
 
     public String getCorreoElectronico() {
         return correoElectronico;
+    }
+    
+    public String getFechaNacimientoString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(fechaNacimiento);   
     }
 
     public void setCorreoElectronico(String correoElectronico) {

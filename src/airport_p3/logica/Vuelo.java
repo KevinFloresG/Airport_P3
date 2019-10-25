@@ -6,6 +6,7 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -74,6 +75,16 @@ public class Vuelo implements Serializable {
         this.duracion = duracion;
     }
 
+    public Vuelo(String idVuelo, String dia, Date hora, Date duracion, Avion avion, Ciudad ciudad, Ciudad ciudad1) {
+        this.idVuelo = idVuelo;
+        this.dia = dia;
+        this.hora = hora;
+        this.duracion = duracion;
+        this.avion = avion;
+        this.ciudad = ciudad;
+        this.ciudad1 = ciudad1;
+    }
+
     public String getIdVuelo() {
         return idVuelo;
     }
@@ -93,6 +104,11 @@ public class Vuelo implements Serializable {
     public Date getHora() {
         return hora;
     }
+    
+    public String getHoraString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        return sdf.format(hora);
+    }
 
     public void setHora(Date hora) {
         this.hora = hora;
@@ -100,6 +116,11 @@ public class Vuelo implements Serializable {
 
     public Date getDuracion() {
         return duracion;
+    }
+    
+    public String getDuracionString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        return sdf.format(duracion);  
     }
 
     public void setDuracion(Date duracion) {

@@ -44,6 +44,11 @@ public class Formapago implements Serializable {
         this.idFormaPago = idFormaPago;
     }
 
+    public Formapago(String idFormaPago, String nombre) {
+        this.idFormaPago = idFormaPago;
+        this.nombre = nombre;
+    }
+
     public String getIdFormaPago() {
         return idFormaPago;
     }

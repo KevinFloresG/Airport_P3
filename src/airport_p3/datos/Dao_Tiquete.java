@@ -32,9 +32,9 @@ public class Dao_Tiquete {
     }
     
     public void add(Tiquete t) throws Exception{
-        String sql = "INSERT INTO Tiquete (idTiquete,asiento,reserva) "+
-                     "VALUES(%s,'%s',%s)"; 
-        sql = String.format(sql,Integer.toString(t.getIdTiquete()),t.getAsiento(),
+        String sql = "INSERT INTO Tiquete (asiento,reserva) "+
+                     "VALUES('%s',%s)"; 
+        sql = String.format(sql,t.getAsiento(),
                 Integer.toString(t.getReserva().getIdReserva()));
         if(db.executeUpdate(sql) == 0){
             throw new Exception("Tiquete ya vendido");

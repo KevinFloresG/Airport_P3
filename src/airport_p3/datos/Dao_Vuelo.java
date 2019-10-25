@@ -1,9 +1,7 @@
 
 package airport_p3.datos;
 
-import airport_p3.logica.Ciudad;
 import airport_p3.logica.Vuelo;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,12 +20,12 @@ public class Dao_Vuelo {
     }
 
     public Dao_Vuelo() {
+        this.db = new Database_relation();
     }
 
     public Dao_Vuelo(Database_relation db) {
         this.db = db;
     }
-    private static final Logger LOG = Logger.getLogger(Dao_Vuelo.class.getName());
     
     public void delete(Vuelo c) throws Exception {
         String sql = "delete from Vuelo where idVuelo='%s'";
@@ -51,16 +49,15 @@ public class Dao_Vuelo {
         );*/
     public void add(Vuelo c) throws Exception {
         String sql = "insert into Vuelo (idVuelo,dia,hora,avion,origen,destino,duracion) "
-                + "values('%s','%s',%s,'%s','%s','%s',%s)";
+                + "values('%s','%s','%s','%s','%s','%s','%s')";
         sql = String.format(sql,
                 c.getIdVuelo(),
                 c.getDia(),
-                c.getHora(),
-                c.getAvion(),
-                c.getCiudad(),
-                c.getCiudad1(),
-                c.getDuracion()
-        
+                c.getHoraString(),
+                c.getAvion().getIdAvion(),
+                c.getCiudad().getIdCiudad(),
+                c.getCiudad1().getIdCiudad(),
+                c.getDuracionString()
         );
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Vuelo ya existe");
@@ -88,17 +85,18 @@ public class Dao_Vuelo {
 
 
         public void update(Vuelo c) throws Exception {
-        String sql = "update Vuela set dia='%s',hora=%s,Avion='%s',origen=%s,destino='%s',duracion=%s "
-                + "where idCiudad='%s'";
-        sql = String.format(sql,c.getIdVuelo(),
+        String sql = "update Vuelo set dia='%s',hora='%s',Avion='%s',origen='%s',destino='%s',duracion='%s' "
+                + "where idVuelo='%s'";
+        sql = String.format(sql,
                 c.getDia(),
-                c.getHora(),
-                c.getAvion(),
-                c.getCiudad(),
-                c.getCiudad1(),
-                c.getDuracion());
+                c.getHoraString(),
+                c.getAvion().getIdAvion(),
+                c.getCiudad().getIdCiudad(),
+                c.getCiudad1().getIdCiudad(),
+                c.getDuracionString(),
+                c.getIdVuelo());
         if (db.executeUpdate(sql) == 0) {
-            throw new Exception("Avion no existe");
+            throw new Exception("Vuelo no existe");
         }
     }
 }

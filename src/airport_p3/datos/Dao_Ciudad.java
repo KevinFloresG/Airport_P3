@@ -44,7 +44,7 @@ public class Dao_Ciudad {
 
     public void add(Ciudad c) throws Exception {
         String sql = "insert into Ciudad (idCiudad, pais,nombre) "
-                + "values('%s','%s')";
+                + "values('%s','%s','%s')";
         sql = String.format(sql, c.getIdCiudad(), c.getPais().getIdPais(),c.getNombre());
         int count = db.executeUpdate(sql);
         if (count == 0) {

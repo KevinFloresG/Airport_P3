@@ -2,8 +2,6 @@ package airport_p3.datos;
 import airport_p3.logica.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -18,9 +16,8 @@ public class Dao_Usuario {
     }
 
     public Dao_Usuario() {
+        this.db = new Database_relation();
     }
-    
-    private static final Logger LOG = Logger.getLogger(Dao_Usuario.class.getName());
                
     public Database_relation getDb() {
         return db;
@@ -29,8 +26,7 @@ public class Dao_Usuario {
     public void setDb(Database_relation db) {
         this.db = db;
     }
-        
-        
+         
     public void delete(Usuario p) throws Exception{
         String sql="DELETE from Usuario WHERE idUsuario='%s'";
         sql = String.format(sql, p.getIdUsuario());
@@ -39,29 +35,25 @@ public class Dao_Usuario {
         }
     }
     
-    
-    
-    
     public void add(Usuario p) throws Exception{
         String sql="INSERT INTO Usuario (idUsuario,"
                 + " nombre, contraseña, apellido,correoElectronico,"
-                + "fechaNacimiento,direccion,telefonoCelular ) "+
-                "VALUES('%s','%s','%s','%s','%s',%s,'%s',%s)";
-        sql=String.format(sql,p.getIdUsuario(),
+                + "fechaNacimiento,direccion,telefonoTrabajo,telefonoCelular) "+
+                "VALUES('%s','%s','%s','%s','%s','%s','%s',%s,%s)";
+        sql=String.format(sql,
+                p.getIdUsuario(),
                 p.getNombre(),
                 p.getContraseña(),
                 p.getApellido(),
                 p.getCorreoElectronico(),
-                p.getFechaNacimiento(),/*OJO COMO HACER DE TIPO DATE*/
+                p.getFechaNacimientoString(),/*OJO COMO HACER DE TIPO DATE*/
                 p.getDireccion(),
-                p.getTelefonoCelular());        
+                Integer.toString(p.getTelefonoTrabajo()),
+                Integer.toString(p.getTelefonoCelular()));        
         if (db.executeUpdate(sql) == 0){
             throw new Exception("Usuario ya existe");
         }
     }
-     
-    
-    
 
     public void update(Usuario p) throws Exception{
         String sql="update Usuario set nombre='%s',contraseña='%s', apellido='%s'"
@@ -79,8 +71,7 @@ public class Dao_Usuario {
             throw new Exception("Usuario no existe");
         }
     }
-      
-     
+
     private Usuario usuario(ResultSet rs){
         try {
             Usuario p= new Usuario();
