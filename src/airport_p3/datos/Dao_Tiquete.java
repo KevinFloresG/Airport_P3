@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package airport_p3.datos;
 
 import airport_p3.logica.Tiquete;
@@ -42,9 +38,11 @@ public class Dao_Tiquete {
     }
     
     public void update(Tiquete t) throws Exception{
-        String sql = "UPDATE Tiquete SET reserva='%s', asiento=%s "+
+        String sql = "UPDATE Tiquete SET reserva=%s, asiento='%s' "+
                      "WHERE idTiquete=%s";
-        sql = String.format(sql,Integer.toString(t.getReserva().getIdReserva()),t.getAsiento(),
+        sql = String.format(sql,
+                Integer.toString(t.getReserva().getIdReserva()),
+                t.getAsiento(),
                 Integer.toString(t.getIdTiquete()));
         if(db.executeUpdate(sql) == 0){
             throw new Exception("Tiquete no existe");
@@ -52,7 +50,7 @@ public class Dao_Tiquete {
     }
     
     public void delete(Tiquete t) throws Exception{
-        String sql = "DELETE Tiquete WHERE idTiquete=%s";
+        String sql = "DELETE FROM Tiquete WHERE idTiquete=%s";
         sql = String.format(sql,Integer.toString(t.getIdTiquete()));
         if(db.executeUpdate(sql) == 0){
             throw new Exception("Tiquete no existe");

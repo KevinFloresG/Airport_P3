@@ -1,6 +1,7 @@
+
 package airport_p3.datos;
+
 import airport_p3.logica.Reserva;
-import java.util.logging.Logger;
 /**
  *
  * @author Daniel
@@ -8,7 +9,6 @@ import java.util.logging.Logger;
 public class Dao_Reserva {
         
     Database_relation db;
-    private static final Logger LOG = Logger.getLogger(Dao_Reserva.class.getName());
 
     public Database_relation getDb() {
         return db;
@@ -23,28 +23,37 @@ public class Dao_Reserva {
     }
 
     public Dao_Reserva() {
+        this.db = new Database_relation();
     }
 
-        public void add(Reserva t) throws Exception{
-        String sql = "INSERT INTO Reserva (idReserva,asiento,reserva) "+
-                     "VALUES(%s,'%s',%s)"; 
-        sql = String.format(sql,Integer.toString(t.getIdReserva()),t.getUsuario(),t.getFormapago());
+    public void add(Reserva t) throws Exception{
+        String sql = "INSERT INTO Reserva(usuario, fechaVuelo, formaPago)"+
+                " VALUES('%s','%s','%s')"; 
+        sql = String.format(sql,
+                t.getUsuario().getIdUsuario(),
+                t.getFechavuelo().getIdFechaVuelo(),
+                t.getFormapago().getIdFormaPago());
         if(db.executeUpdate(sql) == 0){
             throw new Exception("Reserva ya existente");
         }    
     }
     
     public void update(Reserva t) throws Exception{
-        String sql = "UPDATE Reserva SET reserva='%s', asiento=%s "+
-                     "WHERE idReserva=%s";
-        sql = String.format(sql,Integer.toString(t.getIdReserva()),t.getIdReserva(),t.getUsuario(),t.getFormapago());
+        String sql = "UPDATE Reserva SET usuario='%s', fechaVuelo='%s',"+
+                " formaPago='%s' WHERE idReserva=%s"; 
+        sql = String.format(sql,
+                t.getUsuario().getIdUsuario(),
+                t.getFechavuelo().getIdFechaVuelo(),
+                t.getFormapago().getIdFormaPago(),
+                Integer.toString(t.getIdReserva())
+        );
         if(db.executeUpdate(sql) == 0){
-            throw new Exception("Reserva no existe");
+            throw new Exception("Reserva no existente");
         } 
     }
     
     public void delete(Reserva t) throws Exception{
-        String sql = "DELETE Reserva WHERE idReserva=%s";
+        String sql = "DELETE FROM Reserva WHERE idReserva=%s";
         sql = String.format(sql,Integer.toString(t.getIdReserva()));
         if(db.executeUpdate(sql) == 0){
             throw new Exception("Reserva no existe");

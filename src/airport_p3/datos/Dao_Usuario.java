@@ -56,17 +56,19 @@ public class Dao_Usuario {
     }
 
     public void update(Usuario p) throws Exception{
-        String sql="update Usuario set nombre='%s',contraseña='%s', apellido='%s'"
-                + ",correoElectronico='%s', fechaNacimiento='%s' ,direccion='%s', telefonoCelular='%s'"+
-                "where idUsuario='%s'";
-        sql=String.format(sql,p.getIdUsuario(),
+        String sql="update Usuario set nombre='%s',contraseña='%s', apellido='%s',correoElectronico='%s'"
+                + ", fechaNacimiento='%s' ,direccion='%s', telefonoTrabajo=%s, telefonoCelular=%s"+
+                " where idUsuario='%s'";
+        sql=String.format(sql,
                 p.getNombre(),
                 p.getContraseña(),
                 p.getApellido(),
                 p.getCorreoElectronico(),
-                p.getFechaNacimiento(),/*OJO COMO HACER DE TIPO DATE*/
+                p.getFechaNacimientoString(),/*OJO COMO HACER DE TIPO DATE*/
                 p.getDireccion(),
-                p.getTelefonoCelular());
+                Integer.toString(p.getTelefonoTrabajo()),
+                Integer.toString(p.getTelefonoCelular()),
+                p.getIdUsuario());   
         if (db.executeUpdate(sql) == 0){
             throw new Exception("Usuario no existe");
         }

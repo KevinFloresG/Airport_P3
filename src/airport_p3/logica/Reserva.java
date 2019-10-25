@@ -53,10 +53,14 @@ public class Reserva implements Serializable {
     public Reserva() {
     }
     
-    public Reserva(ResultSet s){}
-    
     public Reserva(Integer idReserva) {
         this.idReserva = idReserva;
+    }
+
+    public Reserva(Usuario usuario, Fechavuelo fechavuelo, Formapago formapago) {
+        this.usuario = usuario;
+        this.fechavuelo = fechavuelo;
+        this.formapago = formapago;
     }
 
     public Integer getIdReserva() {

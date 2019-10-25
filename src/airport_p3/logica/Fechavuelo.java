@@ -6,6 +6,7 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -85,6 +86,11 @@ public class Fechavuelo implements Serializable {
 
     public int getDisponibles() {
         return disponibles;
+    }
+    
+    public String getFechaString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(fecha);
     }
 
     public void setDisponibles(int disponibles) {
