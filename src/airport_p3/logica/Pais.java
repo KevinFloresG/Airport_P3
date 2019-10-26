@@ -6,6 +6,7 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -39,6 +40,7 @@ public class Pais implements Serializable {
     private List<Ciudad> ciudadList;
 
     public Pais() {
+        ciudadList = new ArrayList<>();
     }
 
     public Pais(String idPais) {
@@ -96,7 +98,7 @@ public class Pais implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Pais[ idPais=" + idPais + " ]";
+        return "logica.Pais[ idPais=" + idPais + " nombre = "+nombre+"]";
     }
     
 }

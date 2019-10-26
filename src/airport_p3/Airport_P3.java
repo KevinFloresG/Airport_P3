@@ -1,4 +1,3 @@
-
 package airport_p3;
 
 import airport_p3.datos.*;
@@ -8,9 +7,9 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 
 /**
  *
@@ -27,7 +26,7 @@ public class Airport_P3 {
         Date hora = sdf.parse("8:30:0"); // 08:30:00
         Date duracion = sdf.parse("2:45:00"); // 02:45:00
         
-        // Un DATE
+         Un DATE
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
         Date oks = sdf2.parse("14/9/1999"); // yyyy-MM-dd
         
@@ -54,9 +53,25 @@ public class Airport_P3 {
         
         Tiquete t = new Tiquete(4,"A3");
         t.setReserva(re);*/
-        Dao_Avion av = new Dao_Avion();
-        Avion n = av.get("Boe60");
-        System.out.println("FIN");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+        Date oks = sdf2.parse("14/9/1999"); // yyyy-MM-dd
+        Date oks1 = sdf2.parse("25/11/1996"); // yyyy-MM-dd
+        Usuario us = new Usuario("Kefin****", "Kevin", "Matenme", "Flores G", "kevinfg1413@gmail.com",
+                oks, "La verga", 11110000, 82223456
+        );
+        Usuario us1 = new Usuario("Carlos****", "Carlos", "Orange90", "Naranjo", "cnaranjo517@gmail.com",
+                oks, "Los Santos", 11110000, 82223456
+        );
+//        Dao_Avion av = new Dao_Avion();
+//        Avion n = av.get("Boe60");
+//        System.out.println("FIN");
+        Usuario usPrueba = new Usuario();
+        List<Usuario> lu = new ArrayList();
+        Dao_Usuario du = new Dao_Usuario();
+        lu = du.search(us);
+        System.out.println(lu.toString());
+//        du.add(us);
+//        du.add(us1);
     }
-    
+
 }

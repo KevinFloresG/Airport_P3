@@ -63,19 +63,46 @@ public class Dao_FormaPago {
         }
     }
     
-    public List<Formapago> search(String nombre){
+    public List<Formapago> search(Formapago f){
         List<Formapago> resultado = new ArrayList<Formapago>();
         try {
             String sql="select * "+
                      "from FormaPago p "+
-                    "where p.idFormaPago like '%%%s%%'";
-            sql=String.format(sql,nombre);
+                    "where p.nombre like '%%%s%%'";
+            sql=String.format(sql,f.getNombre());
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(formapago(rs));
             }
         } catch (SQLException ex) { }
         return resultado;
+    }
+    
+    public Formapago get(String id) throws SQLException, Exception{
+        String sql = "SELECT * FROM formapago WHERE idFormaPago='%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        if(rs.next()){
+            return formapago(rs);
+        }
+        else{
+        throw new Exception("Forma de pago no existe");
+        }
+        
+    }
+    
+    public List<Formapago> getAll(){
+        List<Formapago> l = new ArrayList<>();
+        try{
+        String sql = "SELECT * FROM formapago";
+        sql = String.format(sql);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+            l.add(formapago(rs));
+        }
+        }
+        catch(SQLException ex){}
+        return l;
     }
     
      

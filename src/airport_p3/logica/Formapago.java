@@ -6,6 +6,7 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -38,6 +39,7 @@ public class Formapago implements Serializable {
     private List<Reserva> reservaList;
 
     public Formapago() {
+        reservaList =  new ArrayList<>();
     }
 
     public Formapago(String idFormaPago) {
@@ -95,7 +97,7 @@ public class Formapago implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Formapago[ idFormaPago=" + idFormaPago + " ]";
+        return "logica.Formapago[ idFormaPago=" + idFormaPago + "nombre="+nombre+" ]";
     }
     
 }

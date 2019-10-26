@@ -2,6 +2,8 @@ package airport_p3.datos;
 import airport_p3.logica.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -33,7 +35,49 @@ public class Dao_Usuario {
             throw new Exception("Usuario no existe");
         }
     }
+    public Usuario get(String id) throws Exception{
+        String sql = "SELECT* FROM Usuario WHERE idUsuario='%s'";
+        sql = String.format(sql,id);
+        ResultSet rs = db.executeQuery(sql);
+        if(rs.next()){
+
+            return usuario(rs);
+        }
+        else{
+            System.out.println("Usuarioget");
+            
+            throw new Exception("Usuario no existe.");
+        }
+    }
     
+    public List<Usuario> getAll(){
+        List<Usuario> l = new ArrayList<>();
+        try{
+        String sql = "SELECT * FROM Usuario";
+        sql = String.format(sql);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+            l.add(usuario(rs));
+        }
+        }
+        catch(SQLException ex){}
+        return l;
+    }
+    
+    public List<Usuario> search(Usuario u){
+        List<Usuario> l = new ArrayList<>();
+        try{
+            String sql = "SELECT*FROM Usuario WHERE nombre like '%%%s%%' "
+                    + "and apellido like '%%%s%%' and idUsuario like '%%%s%%'";
+            sql = String.format(sql,u.getNombre(),u.getApellido(),u.getIdUsuario());
+            ResultSet rs = db.executeQuery(sql);
+            while(rs.next()){
+                l.add(usuario(rs));
+            }  
+        }
+        catch (SQLException ex) { }
+        return l;
+    }
     public void add(Usuario p) throws Exception{
         String sql="INSERT INTO Usuario (idUsuario,"
                 + " nombre, contraseña, apellido,correoElectronico,"
@@ -84,9 +128,11 @@ public class Dao_Usuario {
             p.setCorreoElectronico(rs.getString("correoElectronico"));
             p.setFechaNacimiento(rs.getDate("fechaNacimiento"));    //OJO
             p.setDireccion(rs.getString("direccion"));
-            p.setTelefonoCelular(rs.getByte("telefonoCelular"));    //OJO
+            p.setTelefonoTrabajo(rs.getInt("telefonoTrabajo"));
+            p.setTelefonoCelular(rs.getInt("telefonoCelular"));    //OJO
             return p;
         } catch (SQLException ex) {
+
             return null;
         }
     }

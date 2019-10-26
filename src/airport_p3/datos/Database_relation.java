@@ -42,7 +42,7 @@ public class Database_relation {
             String password = prop.getProperty("database_password");
             String database = prop.getProperty("database_name");
             String URL_conexion="jdbc:mysql://"+ server+":"+port+"/"+database+"?user="+user+"&password="+password;
-            //String URL_conexion="jdbc:mysql://"+ server+":"+port+"/"+database+"?useTimezone=true&serverTimezone=UTC&user="+user+"&password="+password+"&useSSL=false";
+//            String URL_conexion="jdbc:mysql://"+ server+":"+port+"/"+database+"?useTimezone=true&serverTimezone=UTC&user="+user+"&password="+password+"&useSSL=false";
             Class.forName(driver).newInstance();
             return DriverManager.getConnection(URL_conexion);
         } catch (Exception e) {

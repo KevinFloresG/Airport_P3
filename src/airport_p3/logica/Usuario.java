@@ -7,6 +7,7 @@ package airport_p3.logica;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -56,7 +57,7 @@ public class Usuario implements Serializable {
     @Column(name = "direccion")
     private String direccion;
     @Column(name = "telefonoTrabajo")
-    private Integer telefonoTrabajo;
+    private int telefonoTrabajo;
     @Basic(optional = false)
     @Column(name = "telefonoCelular")
     private int telefonoCelular;
@@ -64,6 +65,7 @@ public class Usuario implements Serializable {
     private List<Reserva> reservaList;
 
     public Usuario() {
+        reservaList = new ArrayList<>();
     }
 
     public Usuario(String idUsuario) {
@@ -144,11 +146,11 @@ public class Usuario implements Serializable {
         this.direccion = direccion;
     }
 
-    public Integer getTelefonoTrabajo() {
+    public int getTelefonoTrabajo() {
         return telefonoTrabajo;
     }
 
-    public void setTelefonoTrabajo(Integer telefonoTrabajo) {
+    public void setTelefonoTrabajo(int telefonoTrabajo) {
         this.telefonoTrabajo = telefonoTrabajo;
     }
 
