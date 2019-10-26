@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -18,15 +19,17 @@ import java.util.Date;
 public class Airport_P3 {
 
     public static void main(String[] args) throws Exception {
+        /*
         
         // Algunos TIME
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        Date hora = sdf.parse("8:30:0");
-        Date duracion = sdf.parse("2:45:00");
+        // vuelo.setFecha(sdf.parse(rs.getTime().toString()));
+        Date hora = sdf.parse("8:30:0"); // 08:30:00
+        Date duracion = sdf.parse("2:45:00"); // 02:45:00
         
         // Un DATE
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-        Date oks = sdf2.parse("14/9/1999");
+        Date oks = sdf2.parse("14/9/1999"); // yyyy-MM-dd
         
         // Variables que ya existen en la base de datos
         Avion a = new Avion("Boe60");
@@ -50,7 +53,10 @@ public class Airport_P3 {
         re.setIdReserva(3);
         
         Tiquete t = new Tiquete(4,"A3");
-        t.setReserva(re);
+        t.setReserva(re);*/
+        Dao_Avion av = new Dao_Avion();
+        Avion n = av.get("Boe60");
+        System.out.println("FIN");
     }
     
 }

@@ -2,6 +2,9 @@
 package airport_p3.datos;
 
 import airport_p3.logica.Avion;
+import airport_p3.logica.Tipoavion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -57,6 +60,24 @@ public class Dao_Avion {
         if (count == 0) {
             throw new Exception("Avion no existe");
         }
+    }
+    
+    public Avion get(String id) throws SQLException, Exception{
+        String sql="SELECT * FROM Avion WHERE idAvion='%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        if(rs.next()){
+            Avion a = new Avion();
+            Dao_TipoAvion dao = new Dao_TipoAvion(); // con esto sirve pero hay que hacer un singleton 
+                                                     // de todos los daos mejor...
+            a.setIdAvion(rs.getString("idAvion"));
+            a.setTipoavion(dao.get(rs.getString("tipoAvion")));
+            return a;
+        }
+        else{
+            throw new Exception("Avion no existe");
+        }
+    
     }
 
 

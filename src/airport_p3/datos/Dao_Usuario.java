@@ -2,7 +2,6 @@ package airport_p3.datos;
 import airport_p3.logica.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 /**
  *
