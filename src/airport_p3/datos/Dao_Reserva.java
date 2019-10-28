@@ -2,6 +2,10 @@
 package airport_p3.datos;
 
 import airport_p3.logica.Reserva;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Daniel
@@ -60,5 +64,61 @@ public class Dao_Reserva {
         }
     }
     
+    public Reserva get(int id) throws SQLException, Exception{
+        String sql = "SELECT * FROM Reserva where idReserva=%s";
+        sql = String.format(sql, Integer.toString(id));
+        ResultSet rs = db.executeQuery(sql);
+        if(rs.next()){
+            Dao_FormaPago dao = new Dao_FormaPago();
+            Dao_FechaVuelo dao1 = new Dao_FechaVuelo();
+            Dao_Usuario dao2 = new Dao_Usuario();
+            Reserva r = new Reserva();
+            r.setFechavuelo(dao1.get(rs.getString("fechaVuelo")));
+            r.setFormapago(dao.get(rs.getString("formaPago")));
+            r.setIdReserva(rs.getInt("idReserva"));
+            r.setUsuario(dao2.get(rs.getString("usuario")));
+            return r;
+        }
+        else{
+            throw new Exception("Reserva no Existe");
+        }
+    }
+    
+    public List<Reserva> getAll() throws SQLException, Exception{
+        List<Reserva> l = new ArrayList<>();
+        String sql = "SELECT * FROM Reserva";
+        ResultSet rs = db.executeQuery(sql);
+        Dao_FormaPago dao = new Dao_FormaPago();
+        Dao_FechaVuelo dao1 = new Dao_FechaVuelo();
+        Dao_Usuario dao2 = new Dao_Usuario();
+        while(rs.next()){
+            Reserva r = new Reserva();
+            r.setFechavuelo(dao1.get(rs.getString("fechaVuelo")));
+            r.setFormapago(dao.get(rs.getString("formaPago")));
+            r.setIdReserva(rs.getInt("idReserva"));
+            r.setUsuario(dao2.get(rs.getString("usuario")));           
+            l.add(r);
+        }
+        return l;
+    }
+    
+    public List<Reserva> search(Reserva x) throws SQLException, Exception{
+        List<Reserva> l = new ArrayList<>();
+        String sql = "SELECT * FROM Reserva where usuario like '%%%s%%'";
+        sql = String.format(sql, x.getUsuario().getIdUsuario());
+        ResultSet rs = db.executeQuery(sql);
+        Dao_FormaPago dao = new Dao_FormaPago();
+        Dao_FechaVuelo dao1 = new Dao_FechaVuelo();
+        Dao_Usuario dao2 = new Dao_Usuario();
+        while(rs.next()){
+            Reserva r = new Reserva();
+            r.setFechavuelo(dao1.get(rs.getString("fechaVuelo")));
+            r.setFormapago(dao.get(rs.getString("formaPago")));
+            r.setIdReserva(rs.getInt("idReserva"));
+            r.setUsuario(dao2.get(rs.getString("usuario")));           
+            l.add(r);
+        }
+        return l;
+    }
     
 }

@@ -2,6 +2,10 @@
 package airport_p3.datos;
 
 import airport_p3.logica.Tiquete;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -57,4 +61,51 @@ public class Dao_Tiquete {
         }
     }
     
+    public Tiquete get(String id) throws SQLException, Exception{
+        String sql = "SELECT * FROM Tiquete where id=%s";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        if(rs.next()){
+            Dao_Reserva dao = new Dao_Reserva();
+            Tiquete t = new Tiquete();
+            t.setAsiento(rs.getString("asiento"));
+            t.setIdTiquete(rs.getInt("idTiquete"));
+            t.setReserva(dao.get(rs.getInt("reserva")));
+            return t;
+        }
+        else{
+            throw new Exception("Tiquete no Existe");
+        }
+    }
+    
+    public List<Tiquete> search(Tiquete y) throws SQLException, Exception{
+        List<Tiquete> l = new ArrayList<>();
+        String sql = "SELECT * FROM Tiquete where reserva like %s";
+        sql = String.format(sql, Integer.toString(y.getReserva().getIdReserva()));
+        ResultSet rs = db.executeQuery(sql);
+        Dao_Reserva dao = new Dao_Reserva();
+        while(rs.next()){      
+            Tiquete t = new Tiquete();
+            t.setAsiento(rs.getString("asiento"));
+            t.setIdTiquete(rs.getInt("idTiquete"));
+            t.setReserva(dao.get(rs.getInt("reserva")));
+            l.add(t);
+        }
+        return l;
+    }
+    
+    public List<Tiquete> getAll() throws SQLException, Exception{
+        List<Tiquete> l = new ArrayList<>();
+        String sql = "SELECT * FROM Tiquete";
+        ResultSet rs = db.executeQuery(sql);
+        Dao_Reserva dao = new Dao_Reserva();
+        while(rs.next()){      
+            Tiquete t = new Tiquete();
+            t.setAsiento(rs.getString("asiento"));
+            t.setIdTiquete(rs.getInt("idTiquete"));
+            t.setReserva(dao.get(rs.getInt("reserva")));
+            l.add(t);
+        }
+        return l;
+    }
 }

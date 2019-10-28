@@ -63,18 +63,16 @@ public class Dao_FormaPago {
         }
     }
     
-    public List<Formapago> search(Formapago f){
-        List<Formapago> resultado = new ArrayList<Formapago>();
-        try {
-            String sql="select * "+
-                     "from FormaPago p "+
-                    "where p.nombre like '%%%s%%'";
-            sql=String.format(sql,f.getNombre());
-            ResultSet rs =  db.executeQuery(sql);
-            while (rs.next()) {
-                resultado.add(formapago(rs));
-            }
-        } catch (SQLException ex) { }
+    public List<Formapago> search(Formapago f) throws SQLException{
+        List<Formapago> resultado = new ArrayList<>();
+        String sql="select * "+
+                "from FormaPago p "+
+                "where p.nombre like '%%%s%%'";
+        sql=String.format(sql,f.getNombre());
+        ResultSet rs =  db.executeQuery(sql);
+        while (rs.next()) {
+            resultado.add(formapago(rs));
+        }
         return resultado;
     }
     
@@ -86,27 +84,21 @@ public class Dao_FormaPago {
             return formapago(rs);
         }
         else{
-        throw new Exception("Forma de pago no existe");
-        }
-        
+            throw new Exception("Forma de pago no existe");
+        }    
     }
     
-    public List<Formapago> getAll(){
+    public List<Formapago> getAll() throws SQLException{
         List<Formapago> l = new ArrayList<>();
-        try{
         String sql = "SELECT * FROM formapago";
         sql = String.format(sql);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
             l.add(formapago(rs));
         }
-        }
-        catch(SQLException ex){}
         return l;
     }
     
-     
-     
     private Formapago formapago(ResultSet rs){
         try {
             Formapago p= new Formapago();
@@ -118,7 +110,6 @@ public class Dao_FormaPago {
         }
     }
 
-    
    public  void close(){
     }
 }

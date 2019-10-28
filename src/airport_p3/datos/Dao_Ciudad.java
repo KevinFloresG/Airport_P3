@@ -6,6 +6,10 @@
 package airport_p3.datos;
 
 import airport_p3.logica.Ciudad;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -61,6 +65,55 @@ public class Dao_Ciudad {
         if (count == 0) {
             throw new Exception("Avion no existe");
         }
+    }
+    
+    public Ciudad get(String id) throws SQLException, Exception{
+        String sql="SELECT * FROM Ciudad WHERE idCiudad='%s'";
+        sql = String.format(sql, id);
+        Dao_Pais dao = new Dao_Pais(); 
+        ResultSet rs = db.executeQuery(sql);
+        if(rs.next()){
+            Ciudad a = new Ciudad();
+            a.setIdCiudad(rs.getString("idCiudad"));
+            a.setNombre(rs.getString("nombre"));
+            a.setPais(dao.get(rs.getString("pais")));
+            return a;
+        }
+        else{
+            throw new Exception("Ciudad no existe");
+        }
+    }
+    
+    public List<Ciudad> getAll() throws SQLException, Exception{
+        List<Ciudad> l = new ArrayList<>();
+        String sql = "SELECT * FROM Ciudad";
+        Dao_Pais dao = new Dao_Pais();
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+            Ciudad a = new Ciudad();
+            a.setIdCiudad(rs.getString("idCiudad"));
+            a.setNombre(rs.getString("nombre"));
+            a.setPais(dao.get(rs.getString("pais")));
+            l.add(a);
+        }
+        return l;
+    }
+    
+    public List<Ciudad> search(Ciudad c) throws SQLException, Exception{
+        List<Ciudad> l = new ArrayList<>();
+        Dao_Pais dao = new Dao_Pais();
+        String sql = "SELECT * FROM Ciudad where idCiudad like '%%%s%%' and "+
+                "nombre like '%%%s%%'";
+        sql = String.format(sql, c.getIdCiudad(), c.getNombre());
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+            Ciudad a = new Ciudad();
+            a.setIdCiudad(rs.getString("idCiudad"));
+            a.setNombre(rs.getString("nombre"));
+            a.setPais(dao.get(rs.getString("pais")));
+            l.add(a);
+        }
+        return l;  
     }
 
     

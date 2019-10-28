@@ -44,38 +44,30 @@ public class Dao_Usuario {
             return usuario(rs);
         }
         else{
-            System.out.println("Usuarioget");
-            
             throw new Exception("Usuario no existe.");
         }
     }
     
-    public List<Usuario> getAll(){
+    public List<Usuario> getAll() throws SQLException{
         List<Usuario> l = new ArrayList<>();
-        try{
         String sql = "SELECT * FROM Usuario";
         sql = String.format(sql);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
             l.add(usuario(rs));
         }
-        }
-        catch(SQLException ex){}
         return l;
     }
     
-    public List<Usuario> search(Usuario u){
+    public List<Usuario> search(Usuario u) throws SQLException{
         List<Usuario> l = new ArrayList<>();
-        try{
-            String sql = "SELECT*FROM Usuario WHERE nombre like '%%%s%%' "
+        String sql = "SELECT * FROM Usuario WHERE nombre like '%%%s%%' "
                     + "and apellido like '%%%s%%' and idUsuario like '%%%s%%'";
-            sql = String.format(sql,u.getNombre(),u.getApellido(),u.getIdUsuario());
-            ResultSet rs = db.executeQuery(sql);
-            while(rs.next()){
-                l.add(usuario(rs));
-            }  
+        sql = String.format(sql,u.getNombre(),u.getApellido(),u.getIdUsuario());
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+            l.add(usuario(rs));
         }
-        catch (SQLException ex) { }
         return l;
     }
     public void add(Usuario p) throws Exception{
@@ -89,7 +81,7 @@ public class Dao_Usuario {
                 p.getContraseña(),
                 p.getApellido(),
                 p.getCorreoElectronico(),
-                p.getFechaNacimientoString(),/*OJO COMO HACER DE TIPO DATE*/
+                p.getFechaNacimientoString(),
                 p.getDireccion(),
                 Integer.toString(p.getTelefonoTrabajo()),
                 Integer.toString(p.getTelefonoCelular()));        
@@ -107,7 +99,7 @@ public class Dao_Usuario {
                 p.getContraseña(),
                 p.getApellido(),
                 p.getCorreoElectronico(),
-                p.getFechaNacimientoString(),/*OJO COMO HACER DE TIPO DATE*/
+                p.getFechaNacimientoString(),
                 p.getDireccion(),
                 Integer.toString(p.getTelefonoTrabajo()),
                 Integer.toString(p.getTelefonoCelular()),
@@ -120,16 +112,15 @@ public class Dao_Usuario {
     private Usuario usuario(ResultSet rs){
         try {
             Usuario p= new Usuario();
-            
             p.setIdUsuario(rs.getString("idUsuario"));
             p.setNombre(rs.getString("nombre"));
             p.setContraseña(rs.getString("contraseña"));
             p.setApellido(rs.getString("apellido"));            
             p.setCorreoElectronico(rs.getString("correoElectronico"));
-            p.setFechaNacimiento(rs.getDate("fechaNacimiento"));    //OJO
+            p.setFechaNacimiento(rs.getDate("fechaNacimiento"));    
             p.setDireccion(rs.getString("direccion"));
             p.setTelefonoTrabajo(rs.getInt("telefonoTrabajo"));
-            p.setTelefonoCelular(rs.getInt("telefonoCelular"));    //OJO
+            p.setTelefonoCelular(rs.getInt("telefonoCelular"));    
             return p;
         } catch (SQLException ex) {
 
@@ -138,7 +129,5 @@ public class Dao_Usuario {
     }
     
    public  void close(){
-    }    
-    
-    
+    }       
 }

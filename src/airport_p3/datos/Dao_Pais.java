@@ -74,8 +74,7 @@ public class Dao_Pais {
         }
         else{
             throw new Exception("Pais no existe");
-        }
-        
+        }   
     }
     
     public List<Pais> getAll() throws SQLException{
@@ -89,7 +88,6 @@ public class Dao_Pais {
             pais.setNombre(rs.getString("nombre"));
             l.add(pais);
         }
-    
         return l;
     }
     
@@ -103,8 +101,7 @@ public class Dao_Pais {
             pais.setIdPais(rs.getString("idPais"));
             pais.setNombre(rs.getString("nombre"));
             l.add(pais);
-        }
-    
+        }   
         return l;
     }
 }

@@ -18,60 +18,14 @@ import java.util.List;
 public class Airport_P3 {
 
     public static void main(String[] args) throws Exception {
-        /*
+        Usuario s = new Usuario();
+        s.setApellido("");
+        s.setNombre("");
+        s.setIdUsuario("");
+        Dao_Usuario dao = new Dao_Usuario();
+        s = dao.get("Kefin****");
         
-        // Algunos TIME
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        // vuelo.setFecha(sdf.parse(rs.getTime().toString()));
-        Date hora = sdf.parse("8:30:0"); // 08:30:00
-        Date duracion = sdf.parse("2:45:00"); // 02:45:00
-        
-         Un DATE
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-        Date oks = sdf2.parse("14/9/1999"); // yyyy-MM-dd
-        
-        // Variables que ya existen en la base de datos
-        Avion a = new Avion("Boe60");
-        
-        Ciudad ci = new Ciudad("DFM", "Alajuela");
-        
-        Ciudad ca = new Ciudad("NY", "Liberia");
-        
-        Vuelo v = new Vuelo("A-222","Jueves",hora,duracion,a,ci,ca);
-        
-        Formapago f = new Formapago("003", "Tarjeta de Debito");
-        
-        Usuario us = new Usuario("Kefin****","Kevin","Matenme","Flores G", "kevinfg1413@gmail.com",
-        oks, "La verga", 11110000, 82223456
-        );
-        
-        Fechavuelo fv = new Fechavuelo("A1",oks,60,350000.75);
-        fv.setVuelo(v);
-        
-        Reserva re = new Reserva(us,fv,f);
-        re.setIdReserva(3);
-        
-        Tiquete t = new Tiquete(4,"A3");
-        t.setReserva(re);*/
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-        Date oks = sdf2.parse("14/9/1999"); // yyyy-MM-dd
-        Date oks1 = sdf2.parse("25/11/1996"); // yyyy-MM-dd
-        Usuario us = new Usuario("Kefin****", "Kevin", "Matenme", "Flores G", "kevinfg1413@gmail.com",
-                oks, "La verga", 11110000, 82223456
-        );
-        Usuario us1 = new Usuario("Carlos****", "Carlos", "Orange90", "Naranjo", "cnaranjo517@gmail.com",
-                oks, "Los Santos", 11110000, 82223456
-        );
-//        Dao_Avion av = new Dao_Avion();
-//        Avion n = av.get("Boe60");
-//        System.out.println("FIN");
-        Usuario usPrueba = new Usuario();
-        List<Usuario> lu = new ArrayList();
-        Dao_Usuario du = new Dao_Usuario();
-        lu = du.search(us);
-        System.out.println(lu.toString());
-//        du.add(us);
-//        du.add(us1);
+        System.out.println(s.getFechaNacimientoString());
     }
 
 }
