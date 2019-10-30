@@ -1,7 +1,5 @@
 package airport_p3.Presentation.Pais.Edicion;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import airport_p3.datos.Dao_Pais;
 import airport_p3.logica.Pais;
 
@@ -29,6 +27,7 @@ public class Control_Pais_Edicion {
             model.setPais(daoPais.get(idPais));
         } catch (Exception ex) {
             model.setPais(new Pais("No existe Pais"));
+            // Hay que tirar un mensaje no esto
         }
     }
 
@@ -37,7 +36,7 @@ public class Control_Pais_Edicion {
             daoPais.add(p);
             model.setPais(new Pais());
         } catch (Exception ex) {
-
+            // Hay que decirle al view que tire un mensaje de que no se pudo agregar
         }
     }
 
@@ -46,7 +45,7 @@ public class Control_Pais_Edicion {
             daoPais.update(p);
 
         } catch (Exception ex) {
-
+            // lo mismo no se pudo hacer update
         }
     }
 
@@ -55,7 +54,7 @@ public class Control_Pais_Edicion {
             daoPais.delete(p);
 
         } catch (Exception ex) {
-
+            //Lo mismo
         }
 
     }

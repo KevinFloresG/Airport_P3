@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import airport_p3.logica.Pais;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -137,8 +138,8 @@ public class View_Pais_Edicion extends javax.swing.JInternalFrame implements Obs
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         controller.consultar(idPais.getText());
     }//GEN-LAST:event_consultarActionPerformed
-
-    private Pais toPais() {                                        
+    
+    private Pais toPais() {   
         Pais p = new Pais();
         p.setIdPais(idPais.getText());
         p.setNombre(nombrePais.getText());
@@ -245,7 +246,6 @@ public class View_Pais_Edicion extends javax.swing.JInternalFrame implements Obs
     public void setController(Control_Pais_Edicion controller) {
         this.controller = controller;
     }
-    
     
 }
 

@@ -6,7 +6,6 @@
 package airport_p3.logica;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -49,7 +48,12 @@ public class Tipoavion implements Serializable {
     private List<Avion> avionList;
 
     public Tipoavion() {
-        this.avionList = new ArrayList<>();
+        this.avionList = null;
+        this.idTipoAvion = "";
+        this.mondelo = "";
+        this.cantidadAsientos = 0;
+        this.cantidadColumnas = 0;
+        this.cantidadFilas = 0;
     }
 
     public Tipoavion(String idTipoAvion) {

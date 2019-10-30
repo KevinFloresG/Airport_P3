@@ -1,8 +1,5 @@
 package airport_p3.Presentation.Pais.Listado;
 
-import airport_p3.Presentation.aplication.View;
-import airport_p3.Presentation.Pais.Listado.Model_Pais_Listado;
-import java.util.logging.Level;
 import airport_p3.Airport_P3;
 import airport_p3.datos.Dao_Pais;
 import java.sql.SQLException;

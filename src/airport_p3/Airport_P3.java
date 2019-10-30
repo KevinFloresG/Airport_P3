@@ -125,10 +125,16 @@ public class Airport_P3 {
         EDICION_Control_Horario = CHorarioE;
 
         /*EdicionTipoAvion*/
-        airport_p3.Presentation.TipoAvion.Edicion.Model_TipoAvion MTipoAvionE = new airport_p3.Presentation.TipoAvion.Edicion.Model_TipoAvion();
-        airport_p3.Presentation.TipoAvion.Edicion.View_TipoAvion VTipoAvionE = new airport_p3.Presentation.TipoAvion.Edicion.View_TipoAvion();
-        airport_p3.Presentation.TipoAvion.Edicion.Control_TipoAvion CTipoAvionE = new airport_p3.Presentation.TipoAvion.Edicion.Control_TipoAvion(MTipoAvionE, VTipoAvionE);
+        airport_p3.Presentation.TipoAvion.Edicion.Model MTipoAvionE = new airport_p3.Presentation.TipoAvion.Edicion.Model();
+        airport_p3.Presentation.TipoAvion.Edicion.View VTipoAvionE = new airport_p3.Presentation.TipoAvion.Edicion.View();
+        airport_p3.Presentation.TipoAvion.Edicion.Control CTipoAvionE = new airport_p3.Presentation.TipoAvion.Edicion.Control(MTipoAvionE, VTipoAvionE);
         EDICION_Control_TipoAvion = CTipoAvionE;
+        
+        /*ListadoTipoAvion*/
+        airport_p3.Presentation.TipoAvion.Listado.Model ml = new airport_p3.Presentation.TipoAvion.Listado.Model();
+        airport_p3.Presentation.TipoAvion.Listado.View vl = new airport_p3.Presentation.TipoAvion.Listado.View();
+        airport_p3.Presentation.TipoAvion.Listado.Control cl= new airport_p3.Presentation.TipoAvion.Listado.Control(ml, vl);
+        //EDICION_Control_TipoAvion = CTipoAvionE;
 
         /*ListadoTiquete*/
         airport_p3.Presentation.Tiquete.Listado.Model_Tiquete MTiquete = new airport_p3.Presentation.Tiquete.Listado.Model_Tiquete();
@@ -154,6 +160,9 @@ public class Airport_P3 {
        /*Ciudad*/
        appView.panel.add(VCiudadE);
        appView.panel.add(VCiudadL);
+       
+       CTipoAvionE.show();
+       cl.show();
 
     }
 
@@ -172,7 +181,7 @@ public class Airport_P3 {
     public static airport_p3.Presentation.Horario.Edicion.Control_Horario EDICION_Control_Horario;
     public static airport_p3.Presentation.Reserva.Listado.Control_Reserva LISTADO_Control_Reserva;
     public static airport_p3.Presentation.Ruta.Listado.Control_Ruta LISTADO_Control_Ruta;
-    public static airport_p3.Presentation.TipoAvion.Edicion.Control_TipoAvion EDICION_Control_TipoAvion;
+    public static airport_p3.Presentation.TipoAvion.Edicion.Control EDICION_Control_TipoAvion;
     public static airport_p3.Presentation.Usuario.Listado.Control_Usuario LISTADO_Control_Usuario;
     public static airport_p3.Presentation.Tiquete.Listado.Control_Tiquete LISTADO_Control_Tiquete;
 }

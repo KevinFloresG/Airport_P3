@@ -17,6 +17,7 @@ import airport_p3.logica.Pais;
  * 
  */
 public class Model_Pais_Edicion extends Observable{
+    
     Pais pais;  
 
     public Model_Pais_Edicion() {
