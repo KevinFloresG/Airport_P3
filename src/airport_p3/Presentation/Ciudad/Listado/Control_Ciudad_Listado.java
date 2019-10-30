@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import airport_p3.Airport_P3;
 import airport_p3.datos.Dao_Ciudad;
 import airport_p3.datos.Dao_Pais;
+import airport_p3.logica.Ciudad;
 import java.sql.SQLException;
 
 /**
@@ -29,6 +30,7 @@ public class Control_Ciudad_Listado {
     }
 
     public void buscar(String nombre) throws SQLException, Exception{
+        model.getFiltro().setIdCiudad("");
         model.getFiltro().setNombre(nombre);
         this.refrescar();
     }
