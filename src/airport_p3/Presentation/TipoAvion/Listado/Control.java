@@ -3,6 +3,7 @@ package airport_p3.Presentation.TipoAvion.Listado;
 
 import airport_p3.Airport_P3;
 import airport_p3.datos.Dao_TipoAvion;
+import airport_p3.logica.Tipoavion;
 import java.sql.SQLException;
 
 /**
@@ -13,7 +14,7 @@ public class Control {
     
     private Model model;
     private View view;
-    private final Dao_TipoAvion dao;
+    Dao_TipoAvion dao;
 
     public Control(Model model, View view) {
         this.dao = new Dao_TipoAvion();
@@ -39,9 +40,9 @@ public class Control {
         this.view = view;
     }
     
-    public void buscar(String id, String modelo) throws SQLException {
-        model.getFiltro().setMondelo(modelo);
-        model.getFiltro().setIdTipoAvion(id);
+    public void buscar(String idTipo,String Modelo) throws SQLException {
+        model.getFiltro().setMondelo(Modelo);
+        model.getFiltro().setIdTipoAvion(idTipo);
         this.refrescar();
     }
 

@@ -107,7 +107,7 @@ public class Vuelo implements Serializable {
     
     public String getHoraString(){
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        return sdf.format(hora);
+            return sdf.format(hora);
     }
 
     public void setHora(Date hora) {

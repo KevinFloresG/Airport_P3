@@ -125,7 +125,7 @@ public class Reserva implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Reserva[ idReserva=" + idReserva + " ]";
+        return Integer.toString(idReserva) +usuario+formapago+fechavuelo;
     }
     
 }

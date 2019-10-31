@@ -15,6 +15,7 @@ import java.util.List;
 /**
  *
  * @author Kevin Flores
+ * 
  */
 public class Airport_P3 {
 
@@ -69,11 +70,22 @@ public class Airport_P3 {
         airport_p3.Presentation.Ciudad.Listado.Control_Ciudad_Listado CCiudadL = new airport_p3.Presentation.Ciudad.Listado.Control_Ciudad_Listado(MCiudadL, VCiudadL);
         LISTADO_Control_Ciudad = CCiudadL;
         
+        /*EdicionFormaPago*/
+        airport_p3.Presentation.FormaPago.Edicion.Model_FormaPago_Edicion MFormaPagoE = new airport_p3.Presentation.FormaPago.Edicion.Model_FormaPago_Edicion();
+        airport_p3.Presentation.FormaPago.Edicion.View_FormaPago_Edicion VFormaPagoE = new airport_p3.Presentation.FormaPago.Edicion.View_FormaPago_Edicion();
+        airport_p3.Presentation.FormaPago.Edicion.Control_FormaPago_Edicion CFormaPagoE = new airport_p3.Presentation.FormaPago.Edicion.Control_FormaPago_Edicion(MFormaPagoE, VFormaPagoE);
+        EDICION_Control_FormaPago = CFormaPagoE;
+        
+        /*ListadoFormaPago*/
+        airport_p3.Presentation.FormaPago.Listado.Model_FormaPago_Listado MFormaPagoL = new airport_p3.Presentation.FormaPago.Listado.Model_FormaPago_Listado();
+        airport_p3.Presentation.FormaPago.Listado.View_FormaPago_Listado VFormaPagoL = new airport_p3.Presentation.FormaPago.Listado.View_FormaPago_Listado();
+        airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado CFormaPagoL = new airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado(MFormaPagoL, VFormaPagoL);
+        LISTADO_Control_FormaPago = CFormaPagoL;
+        
+        /*ListadoTiquete*/
         
         
-        
-        
-        
+   
         
         
         
@@ -88,11 +100,7 @@ public class Airport_P3 {
         airport_p3.Presentation.FechaVuelo.Listado.Control_FechaVuelo CFechaVuelo = new airport_p3.Presentation.FechaVuelo.Listado.Control_FechaVuelo(MFechaVuelo, VFechaVuelo);
         LISTADO_Control_FechaVuelo = CFechaVuelo;
 
-        /*ListadoFormaPago*/
-        airport_p3.Presentation.FormaPago.Listado.Model_FormaPago MFormaPago = new airport_p3.Presentation.FormaPago.Listado.Model_FormaPago();
-        airport_p3.Presentation.FormaPago.Listado.View_FormaPago VFormaPago = new airport_p3.Presentation.FormaPago.Listado.View_FormaPago();
-        airport_p3.Presentation.FormaPago.Listado.Control_FormaPago CFormaPago = new airport_p3.Presentation.FormaPago.Listado.Control_FormaPago(MFormaPago, VFormaPago);
-        LISTADO_Control_FormaPago = CFormaPago;
+      
 
         /*ListadoHorario*/
         airport_p3.Presentation.Horario.Listado.Model_Horario MHorario = new airport_p3.Presentation.Horario.Listado.Model_Horario();
@@ -137,9 +145,9 @@ public class Airport_P3 {
         //EDICION_Control_TipoAvion = CTipoAvionE;
 
         /*ListadoTiquete*/
-        airport_p3.Presentation.Tiquete.Listado.Model_Tiquete MTiquete = new airport_p3.Presentation.Tiquete.Listado.Model_Tiquete();
-        airport_p3.Presentation.Tiquete.Listado.View_Tiquete VTiquete = new airport_p3.Presentation.Tiquete.Listado.View_Tiquete();
-        airport_p3.Presentation.Tiquete.Listado.Control_Tiquete CTiquete = new airport_p3.Presentation.Tiquete.Listado.Control_Tiquete(MTiquete, VTiquete);
+        airport_p3.Presentation.Tiquete.Listado.Model_Tiquete_Listado MTiquete = new airport_p3.Presentation.Tiquete.Listado.Model_Tiquete_Listado();
+        airport_p3.Presentation.Tiquete.Listado.View_Tiquete_Listado VTiquete = new airport_p3.Presentation.Tiquete.Listado.View_Tiquete_Listado();
+        airport_p3.Presentation.Tiquete.Listado.Control_Tiquete_Listado CTiquete = new airport_p3.Presentation.Tiquete.Listado.Control_Tiquete_Listado(MTiquete, VTiquete);
         LISTADO_Control_Tiquete = CTiquete;
 
         /*ListadoUsuario*/
@@ -161,6 +169,15 @@ public class Airport_P3 {
        appView.panel.add(VCiudadE);
        appView.panel.add(VCiudadL);
        
+       /*FormaPago*/
+       appView.panel.add(VFormaPagoE);
+       appView.panel.add(VFormaPagoL);
+       
+       /*Tiquete*/
+       appView.panel.add(VTiquete);
+     
+       
+       
        CTipoAvionE.show();
        cl.show();
 
@@ -174,14 +191,20 @@ public class Airport_P3 {
 
     public static airport_p3.Presentation.Avion.Edicion.Control_Avion EDICION_Control_Avion;
     public static airport_p3.Presentation.Avion.Listado.Control_Avion LISTADO_Control_Avion;
+    
+    public static airport_p3.Presentation.FormaPago.Edicion.Control_FormaPago_Edicion EDICION_Control_FormaPago;
+    public static airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado LISTADO_Control_FormaPago;
+    
+   
+    
 
     public static airport_p3.Presentation.FechaVuelo.Listado.Control_FechaVuelo LISTADO_Control_FechaVuelo;
-    public static airport_p3.Presentation.FormaPago.Listado.Control_FormaPago LISTADO_Control_FormaPago;
+ 
     public static airport_p3.Presentation.Horario.Listado.Control_Horario LISTADO_Control_Horario;
     public static airport_p3.Presentation.Horario.Edicion.Control_Horario EDICION_Control_Horario;
     public static airport_p3.Presentation.Reserva.Listado.Control_Reserva LISTADO_Control_Reserva;
     public static airport_p3.Presentation.Ruta.Listado.Control_Ruta LISTADO_Control_Ruta;
     public static airport_p3.Presentation.TipoAvion.Edicion.Control EDICION_Control_TipoAvion;
     public static airport_p3.Presentation.Usuario.Listado.Control_Usuario LISTADO_Control_Usuario;
-    public static airport_p3.Presentation.Tiquete.Listado.Control_Tiquete LISTADO_Control_Tiquete;
+    public static airport_p3.Presentation.Tiquete.Listado.Control_Tiquete_Listado LISTADO_Control_Tiquete;
 }

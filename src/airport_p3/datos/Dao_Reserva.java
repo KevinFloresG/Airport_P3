@@ -68,6 +68,7 @@ public class Dao_Reserva {
         String sql = "SELECT * FROM Reserva where idReserva=%s";
         sql = String.format(sql, Integer.toString(id));
         ResultSet rs = db.executeQuery(sql);
+        
         if(rs.next()){
             Dao_FormaPago dao = new Dao_FormaPago();
             Dao_FechaVuelo dao1 = new Dao_FechaVuelo();
@@ -85,7 +86,9 @@ public class Dao_Reserva {
     }
     
     public List<Reserva> getAll() throws SQLException, Exception{
+
         List<Reserva> l = new ArrayList<>();
+        
         String sql = "SELECT * FROM Reserva";
         ResultSet rs = db.executeQuery(sql);
         Dao_FormaPago dao = new Dao_FormaPago();
@@ -96,9 +99,11 @@ public class Dao_Reserva {
             r.setFechavuelo(dao1.get(rs.getString("fechaVuelo")));
             r.setFormapago(dao.get(rs.getString("formaPago")));
             r.setIdReserva(rs.getInt("idReserva"));
-            r.setUsuario(dao2.get(rs.getString("usuario")));           
+            r.setUsuario(dao2.get(rs.getString("usuario")));
+         
             l.add(r);
         }
+     
         return l;
     }
     

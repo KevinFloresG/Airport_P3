@@ -24,6 +24,18 @@ public class Controller {
         view.setController(this);
     }
     
+     public void ListadoTiqueteShow(){
+        Airport_P3.LISTADO_Control_Tiquete.show();
+    }
+   
+    public void EdicionFormaPagoShow(){
+        Airport_P3.EDICION_Control_FormaPago.show();
+    }
+    
+    public void ListadoFormaPagoShow(){
+        Airport_P3.LISTADO_Control_FormaPago.show();
+    }
+    
         public void ListadoCiudadShow(){
         Airport_P3.LISTADO_Control_Ciudad.show();
     }

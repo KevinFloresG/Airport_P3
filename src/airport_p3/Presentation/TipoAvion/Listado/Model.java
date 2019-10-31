@@ -13,20 +13,28 @@ import java.util.Observer;
  */
 public class Model extends Observable{
     
-    private List<Tipoavion> list;
-    private Tipoavion filtro;
+   List<Tipoavion> tavion;
+   Tipoavion filtro;
+
+
+    public Model(List<Tipoavion> tavion) {
+        this.tavion = tavion;
+        filtro=new Tipoavion();
+    }
 
     public Model() {
-        this.list = new ArrayList<>();
-        this.filtro = new Tipoavion();
+        tavion = new ArrayList<>();
+        filtro=new Tipoavion();
     }
 
     public List<Tipoavion> getList() {
-        return list;
+        return tavion;
     }
 
-    public void setList(List<Tipoavion> list) {
-        this.list = list;
+    public void setList(List<Tipoavion> tavion) {
+        this.tavion = tavion;
+        this.setChanged();
+        this.notifyObservers();         
     }
 
     public Tipoavion getFiltro() {
@@ -36,12 +44,12 @@ public class Model extends Observable{
     public void setFiltro(Tipoavion filtro) {
         this.filtro = filtro;
     }
-    
+
     @Override
     public void addObserver(Observer o){
         super.addObserver(o);
         this.setChanged();
         this.notifyObservers();   
     }
-    
+
 }

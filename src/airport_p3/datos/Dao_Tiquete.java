@@ -62,8 +62,8 @@ public class Dao_Tiquete {
     }
     
     public Tiquete get(String id) throws SQLException, Exception{
-        String sql = "SELECT * FROM Tiquete where id=%s";
-        sql = String.format(sql, id);
+        String sql = "SELECT * FROM Tiquete where idTiquete=%s";
+        sql = String.format(sql,id);
         ResultSet rs = db.executeQuery(sql);
         if(rs.next()){
             Dao_Reserva dao = new Dao_Reserva();
@@ -79,9 +79,11 @@ public class Dao_Tiquete {
     }
     
     public List<Tiquete> search(Tiquete y) throws SQLException, Exception{
+          System.out.println(Integer.toString(y.getReserva().getIdReserva()));
         List<Tiquete> l = new ArrayList<>();
         String sql = "SELECT * FROM Tiquete where reserva like %s";
-        sql = String.format(sql, Integer.toString(y.getReserva().getIdReserva()));
+        sql = String.format(sql,Integer.toString(y.getReserva().getIdReserva()));
+      
         ResultSet rs = db.executeQuery(sql);
         Dao_Reserva dao = new Dao_Reserva();
         while(rs.next()){      

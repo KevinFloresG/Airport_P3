@@ -5,8 +5,6 @@
  */
 package airport_p3.Presentation.aplication;
 
-import airport_p3.Presentation.aplication.Model;
-import airport_p3.Presentation.aplication.Controller;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
@@ -45,6 +43,11 @@ public class View extends javax.swing.JFrame implements Observer {
         edicionCiudad = new javax.swing.JMenu();
         CiudadEdicion = new javax.swing.JMenuItem();
         listadoCiudad = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        EdicionFormaPago = new javax.swing.JMenuItem();
+        ListadoFormaPago = new javax.swing.JMenuItem();
+        Tiquete = new javax.swing.JMenu();
+        ListadoTiquete = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIPE");
@@ -117,6 +120,38 @@ public class View extends javax.swing.JFrame implements Observer {
 
         jMenuBar1.add(edicionCiudad);
 
+        jMenu2.setText("Forma de Pago");
+
+        EdicionFormaPago.setText("Edicion");
+        EdicionFormaPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EdicionFormaPagoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(EdicionFormaPago);
+
+        ListadoFormaPago.setText("Listado");
+        ListadoFormaPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoFormaPagoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(ListadoFormaPago);
+
+        jMenuBar1.add(jMenu2);
+
+        Tiquete.setText("Tiquete");
+
+        ListadoTiquete.setText("Listado");
+        ListadoTiquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoTiqueteActionPerformed(evt);
+            }
+        });
+        Tiquete.add(ListadoTiquete);
+
+        jMenuBar1.add(Tiquete);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -141,6 +176,18 @@ public class View extends javax.swing.JFrame implements Observer {
     private void listadoCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoCiudadActionPerformed
         controller.ListadoCiudadShow();
     }//GEN-LAST:event_listadoCiudadActionPerformed
+
+    private void EdicionFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdicionFormaPagoActionPerformed
+        controller.EdicionFormaPagoShow();
+    }//GEN-LAST:event_EdicionFormaPagoActionPerformed
+
+    private void ListadoFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoFormaPagoActionPerformed
+        controller.ListadoFormaPagoShow();
+    }//GEN-LAST:event_ListadoFormaPagoActionPerformed
+
+    private void ListadoTiqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoTiqueteActionPerformed
+        controller.ListadoTiqueteShow();
+    }//GEN-LAST:event_ListadoTiqueteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,20 +220,23 @@ public class View extends javax.swing.JFrame implements Observer {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new View().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CiudadEdicion;
+    private javax.swing.JMenuItem EdicionFormaPago;
+    private javax.swing.JMenuItem ListadoFormaPago;
+    private javax.swing.JMenuItem ListadoTiquete;
     private javax.swing.JMenu Pais;
+    private javax.swing.JMenu Tiquete;
     private javax.swing.JMenu edicionCiudad;
     private javax.swing.JMenuItem edicionPais;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem listadoCiudad;
     private javax.swing.JMenuItem listadoPais;
