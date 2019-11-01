@@ -253,7 +253,8 @@ public class View_FechaVuelo_Edicion extends javax.swing.JInternalFrame implemen
     private void DisponiblesFechaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisponiblesFechaVueloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DisponiblesFechaVueloActionPerformed
- public Date ParseFecha(String fecha) {
+    
+    public Date ParseFecha(String fecha) {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaDate = null;
         try {
@@ -302,8 +303,8 @@ public class View_FechaVuelo_Edicion extends javax.swing.JInternalFrame implemen
 
     public void renderFechaVuelo(Fechavuelo c) {
         idFechaVuelo.setText(c.getIdFechaVuelo());
-//        String x = c.getFechaString();
-        
+        if(c.getFecha() != null){ FechaVuelo.setText(c.getFechaString()); }
+        else{FechaVuelo.setText("year-month-day");}
         this.vuelo.setModel(new DefaultComboBoxModel<Vuelo>(model.getVuelos().toArray(new Vuelo[0])));
         this.vuelo.setSelectedItem(c.getVuelo());
         DisponiblesFechaVuelo.setText(Integer.toString(c.getDisponibles()));
@@ -329,5 +330,5 @@ public class View_FechaVuelo_Edicion extends javax.swing.JInternalFrame implemen
     public void setController(Control_FechaVuelo_Edicion controller) {
         this.controller = controller;
     }
-
+    
 }

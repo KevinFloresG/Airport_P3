@@ -20,14 +20,11 @@ import java.util.List;
 public class Airport_P3 {
 
     public static void main(String[] args) throws Exception {
-//        Usuario s = new Usuario();
-//        s.setApellido("");
-//        s.setNombre("");
-//        s.setIdUsuario("");
-//        Dao_Usuario dao = new Dao_Usuario();
-//        s = dao.get("Kefin****");
-//        
-//        System.out.println(s.getFechaNacimientoString());
+
+        Dao_FechaVuelo d = new Dao_FechaVuelo();
+        Fechavuelo v = d.get("A1");
+        System.out.println(v.getFecha());
+        
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         /* MVC Para el usuario */
