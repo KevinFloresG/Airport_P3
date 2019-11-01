@@ -55,6 +55,7 @@ public class View extends javax.swing.JFrame implements Observer {
         jMenu4 = new javax.swing.JMenu();
         FechaVuelo = new javax.swing.JMenu();
         ListadoFechaVuelo = new javax.swing.JMenuItem();
+        EdicionFechaVuelo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIPE");
@@ -190,6 +191,14 @@ public class View extends javax.swing.JFrame implements Observer {
         });
         FechaVuelo.add(ListadoFechaVuelo);
 
+        EdicionFechaVuelo.setText("Edicion");
+        EdicionFechaVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EdicionFechaVueloActionPerformed(evt);
+            }
+        });
+        FechaVuelo.add(EdicionFechaVuelo);
+
         jMenuBar1.add(FechaVuelo);
 
         setJMenuBar(jMenuBar1);
@@ -240,6 +249,10 @@ public class View extends javax.swing.JFrame implements Observer {
     private void ListadoFechaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoFechaVueloActionPerformed
         controller.ListadoFechaVueloShow();
     }//GEN-LAST:event_ListadoFechaVueloActionPerformed
+
+    private void EdicionFechaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdicionFechaVueloActionPerformed
+        controller.EdicionFechaVueloShow();
+    }//GEN-LAST:event_EdicionFechaVueloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,6 +306,7 @@ public class View extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenu Avion;
     private javax.swing.JMenuItem CiudadEdicion;
     private javax.swing.JMenuItem EdicionAvion;
+    private javax.swing.JMenuItem EdicionFechaVuelo;
     private javax.swing.JMenuItem EdicionFormaPago;
     private javax.swing.JMenu FechaVuelo;
     private javax.swing.JMenuItem ListadoAvion;

@@ -92,6 +92,12 @@ public class Airport_P3 {
         airport_p3.Presentation.FechaVuelo.Listado.View_FechaVuelo VFechaVuelo = new airport_p3.Presentation.FechaVuelo.Listado.View_FechaVuelo();
         airport_p3.Presentation.FechaVuelo.Listado.Control_FechaVuelo CFechaVuelo = new airport_p3.Presentation.FechaVuelo.Listado.Control_FechaVuelo(MFechaVuelo, VFechaVuelo);
         LISTADO_Control_FechaVuelo = CFechaVuelo;
+        
+        /*edicionFechaVuelo*/
+        airport_p3.Presentation.FechaVuelo.Edicion.Model_FechaVuelo_Edicion  MFechaVueloE = new airport_p3.Presentation.FechaVuelo.Edicion.Model_FechaVuelo_Edicion();
+        airport_p3.Presentation.FechaVuelo.Edicion.View_FechaVuelo_Edicion  VFechaVueloE = new airport_p3.Presentation.FechaVuelo.Edicion.View_FechaVuelo_Edicion();
+        airport_p3.Presentation.FechaVuelo.Edicion.Control_FechaVuelo_Edicion CFechaVueloE = new airport_p3.Presentation.FechaVuelo.Edicion.Control_FechaVuelo_Edicion(MFechaVueloE, VFechaVueloE);
+        EDICION_Control_FechaVuelo = CFechaVueloE;
 
         /*ListadoHorario*/
         airport_p3.Presentation.Horario.Listado.Model_Horario MHorario = new airport_p3.Presentation.Horario.Listado.Model_Horario();
@@ -328,6 +334,8 @@ public class Airport_P3 {
         appViewU.panel.add(VAvion);
         /*Fecha vuelo */
         appViewU.panel.add(VFechaVuelo);
+        appViewU.panel.add(VFechaVueloE);
+        
 
 //       CTipoAvionE.show();
 //       cl.show();
@@ -346,6 +354,7 @@ public class Airport_P3 {
     public static airport_p3.Presentation.FormaPago.Edicion.Control_FormaPago_Edicion EDICION_Control_FormaPago;
     public static airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado LISTADO_Control_FormaPago;
     public static airport_p3.Presentation.FechaVuelo.Listado.Control_FechaVuelo LISTADO_Control_FechaVuelo;
+    public static airport_p3.Presentation.FechaVuelo.Edicion.Control_FechaVuelo_Edicion EDICION_Control_FechaVuelo;
 
     public static airport_p3.Presentation.Horario.Listado.Control_Horario LISTADO_Control_Horario;
     public static airport_p3.Presentation.Horario.Edicion.Control_Horario EDICION_Control_Horario;

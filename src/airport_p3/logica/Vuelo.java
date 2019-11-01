@@ -181,7 +181,7 @@ public class Vuelo implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Vuelo[ idVuelo=" + idVuelo + " ]";
+        return this.getIdVuelo();
     }
     
 }

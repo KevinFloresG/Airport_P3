@@ -23,6 +23,9 @@ public class Controller {
         view.setController(this);
     }
     
+    public void EdicionFechaVueloShow(){
+        Airport_P3.EDICION_Control_FechaVuelo.show();
+    }
     public void ListadoFechaVueloShow(){
         Airport_P3.LISTADO_Control_FechaVuelo.show();
     }

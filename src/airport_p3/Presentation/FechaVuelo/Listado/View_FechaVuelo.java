@@ -5,43 +5,31 @@
  */
 package airport_p3.Presentation.FechaVuelo.Listado;
 
-import airport_p3.Presentation.Vuelo.Listado.View_Vuelo;
-
-import airport_p3.logica.Fechavuelo;
-import airport_p3.logica.Vuelo;
+import airport_p3.Presentation.Ciudad.Listado.*;
+import airport_p3.Presentation.Pais.Listado.*;
 import java.awt.Color;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Daniel
+ * @author Carlos Naranjo
+ * 
  */
-public class View_FechaVuelo extends javax.swing.JInternalFrame implements Observer {
+public class View_FechaVuelo extends javax.swing.JInternalFrame implements Observer{
 
     /**
-     * Creates new form View_FechaVuelo
+     * Creates new form View
      */
     public View_FechaVuelo() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
     }
 
-     private Fechavuelo toFechaVuelo() {
-        Fechavuelo c = new Fechavuelo();
-        c.setIdFechaVuelo("");
-        c.setFecha(ParseFecha(TextFieldFecha.getText()));
-        c.setVuelo((Vuelo) jComboBox1.getSelectedItem());
-        return c;
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,42 +39,38 @@ public class View_FechaVuelo extends javax.swing.JInternalFrame implements Obser
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TableFechaVuelo = new javax.swing.JTable();
-        ButtonBuscar = new javax.swing.JButton();
-        IDfechavuelo = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        TextFieldFecha = new javax.swing.JTextField();
-        ButtonBuscarTodos = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        FechasVuelos = new javax.swing.ButtonGroup();
+        jLabel2 = new javax.swing.JLabel();
+        VueloId = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaFechas = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        Fecha = new javax.swing.JTextField();
+        MostrarTodos = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("ListadoFechaVuelo");
+        setMinimumSize(new java.awt.Dimension(361, 215));
 
-        jInternalFrame1.setClosable(true);
-        jInternalFrame1.setVisible(true);
+        jLabel2.setText("Vuelo");
 
-        TableFechaVuelo.setModel(new javax.swing.table.DefaultTableModel(
+        VueloId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VueloIdActionPerformed(evt);
+            }
+        });
+
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        tablaFechas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -97,135 +81,91 @@ public class View_FechaVuelo extends javax.swing.JInternalFrame implements Obser
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(TableFechaVuelo);
-
-        ButtonBuscar.setText("Buscar");
-        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonBuscarActionPerformed(evt);
+        tablaFechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaFechasMouseClicked(evt);
             }
         });
+        jScrollPane2.setViewportView(tablaFechas);
 
-        IDfechavuelo.setText("Idl vuelo");
+        jLabel3.setText("Fecha");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        MostrarTodos.setText("Mostrar Todos");
+        MostrarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                MostrarTodosActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Fecha del vuelo (yy-mm-dd)");
-
-        ButtonBuscarTodos.setText("Buscar todos");
-        ButtonBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonBuscarTodosActionPerformed(evt);
-            }
-        });
-
-        jMenu1.setText("File");
-
-        jMenuItem1.setText("Salir");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Atras");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu1);
-
-        jInternalFrame1.setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ButtonBuscar)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(IDfechavuelo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(ButtonBuscarTodos)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IDfechavuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(TextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonBuscar)
-                    .addComponent(ButtonBuscarTodos))
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(VueloId, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(MostrarTodos)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                .addComponent(buscar)
+                                .addGap(29, 29, 29))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscar)
+                    .addComponent(jLabel2)
+                    .addComponent(VueloId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(MostrarTodos)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarTodosActionPerformed
-//        controller.MostrarTodos();        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonBuscarTodosActionPerformed
-
-    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
- try {
-//          controller.buscar(toFechaVuelo().getVuelo(),toFechaVuelo().getFecha());
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        try {
+            controller.buscar(this.VueloId.getText(),this.Fecha.getText());
         } catch (Exception ex) {
             Logger.getLogger(View_FechaVuelo.class.getName()).log(Level.SEVERE, null, ex);
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonBuscarActionPerformed
+        }
+    }//GEN-LAST:event_buscarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-    this.setVisible(false);        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void tablaFechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaFechasMouseClicked
+      if (evt.getClickCount() == 2) {
+        int row = this.tablaFechas.getSelectedRow();
+        controller.editar(row);
+      }
+    }//GEN-LAST:event_tablaFechasMouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void VueloIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VueloIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_VueloIdActionPerformed
+
+    private void MostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodosActionPerformed
+       controller.mostrarTodos();
+    }//GEN-LAST:event_MostrarTodosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +193,69 @@ public class View_FechaVuelo extends javax.swing.JInternalFrame implements Obser
             java.util.logging.Logger.getLogger(View_FechaVuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -263,36 +266,25 @@ public class View_FechaVuelo extends javax.swing.JInternalFrame implements Obser
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonBuscar;
-    private javax.swing.JButton ButtonBuscarTodos;
-    private javax.swing.JLabel IDfechavuelo;
-    private javax.swing.JTable TableFechaVuelo;
-    private javax.swing.JTextField TextFieldFecha;
-    private javax.swing.JComboBox<Vuelo> jComboBox1;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField Fecha;
+    private javax.swing.ButtonGroup FechasVuelos;
+    private javax.swing.JButton MostrarTodos;
+    private javax.swing.JTextField VueloId;
+    private javax.swing.JButton buscar;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tablaFechas;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void update(Observable o, Object o1) {
-//        this.TableFechaVuelo.setModel(new TableModel_FechaVuelo(model.getFechavueloDisponibles()));
-        this.TableFechaVuelo.setRowHeight(30);
-//        this.renderVuelo(model.getfiltro());
-       // this.TextFieldFecha.setText(convertirFechaString(model.getfiltro().getFecha()));
+    public void update(Observable o, Object arg) {
+        this.tablaFechas.setModel(new TableModel_FechaVuelo(model.getFechas()));
+        this.tablaFechas.setRowHeight(30);
+//        this.VueloId.setText(model.getFiltro().getIdFechaVuelo());
+//        this.Fecha.setText(model.getFiltro().getVuelo().getIdVuelo());
     }
 
-     public void renderVuelo(Fechavuelo c) {
-//        this.jComboBox1.setModel(new DefaultComboBoxModel<Vuelo>(model.getVuelosDisponibles().toArray(new Vuelo[0])));
-        this.jComboBox1.setSelectedItem(c.getVuelo());
-    }
-    
     Model_FechaVuelo model;
     Control_FechaVuelo controller;
 
@@ -312,25 +304,24 @@ public class View_FechaVuelo extends javax.swing.JInternalFrame implements Obser
     public void setController(Control_FechaVuelo controller) {
         this.controller = controller;
     }
-
-    public void interruption(String msg) {
+    
+     public void interruption(String msg){
         JOptionPane.showMessageDialog(this, msg);
     }
+    
+    
+}
 
-    public static Date ParseFecha(String fecha) {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaDate = null;
-        try {
-            fechaDate = formato.parse(fecha);
-        } catch (ParseException ex) {
-            System.out.println(ex);
-        }
-        return fechaDate;
-    }
-	
-public String convertirFechaString(Date date){
-	
-   return new SimpleDateFormat("yyyy-MM-dd").format(date);
-	
-}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
