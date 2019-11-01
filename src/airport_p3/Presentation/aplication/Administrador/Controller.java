@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package airport_p3.Presentation.aplication;
+package airport_p3.Presentation.aplication.Administrador;
 
 import airport_p3.Airport_P3;
-import  airport_p3.Presentation.aplication.Model;
-import airport_p3.Presentation.aplication.View;
+import  airport_p3.Presentation.aplication.Administrador.Model;
+import airport_p3.Presentation.aplication.Administrador.View;
 
 /**
  *
@@ -22,24 +22,6 @@ public class Controller {
         this.view = view;
         view.setModel(model);
         view.setController(this);
-    }
-    public void ListadoAvionShow(){
-        Airport_P3.LISTADO_Control_Avion.show();
-    }
-    
-    public void EdicionAvionShow(){
-        Airport_P3.EDICION_Control_Avion.show();
-    }
-     public void ListadoTiqueteShow(){
-        Airport_P3.LISTADO_Control_Tiquete.show();
-    }
-   
-    public void EdicionFormaPagoShow(){
-        Airport_P3.EDICION_Control_FormaPago.show();
-    }
-    
-    public void ListadoFormaPagoShow(){
-        Airport_P3.LISTADO_Control_FormaPago.show();
     }
     
         public void ListadoCiudadShow(){
@@ -56,6 +38,18 @@ public class Controller {
 
     public void EdicionPaisShow(){
         Airport_P3.EDICION_Control_Pais.show();
+    }
+    
+    public void ListadoVueloShow(){
+        Airport_P3.LISTADO_Control_Vuelo.show();
+    }
+
+    public void EdicionVueloShow() {
+        Airport_P3.EDICION_Control_Vuelo.show(); }
+
+    public void show() {
+        
+    view.setVisible(true);
     }
 }
 

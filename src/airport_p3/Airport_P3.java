@@ -30,15 +30,15 @@ public class Airport_P3 {
 //        System.out.println(s.getFechaNacimientoString());
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /*ListadoAvion*/
-        airport_p3.Presentation.Avion.Listado.Model_Avion MAvion = new airport_p3.Presentation.Avion.Listado.Model_Avion();
-        airport_p3.Presentation.Avion.Listado.View_Avion VAvion = new airport_p3.Presentation.Avion.Listado.View_Avion();
-        airport_p3.Presentation.Avion.Listado.Control_Avion CAvion = new airport_p3.Presentation.Avion.Listado.Control_Avion(MAvion, VAvion);
+        airport_p3.Presentation.Avion.Listado.Model_Avion_Listado MAvion = new airport_p3.Presentation.Avion.Listado.Model_Avion_Listado();
+        airport_p3.Presentation.Avion.Listado.View_Avion_Listado VAvion = new airport_p3.Presentation.Avion.Listado.View_Avion_Listado();
+        airport_p3.Presentation.Avion.Listado.Control_Avion_Listado CAvion = new airport_p3.Presentation.Avion.Listado.Control_Avion_Listado(MAvion, VAvion);
         LISTADO_Control_Avion = CAvion;
 
         /*EdicionAvion*/
-        airport_p3.Presentation.Avion.Edicion.Model_Avion MAvionE = new airport_p3.Presentation.Avion.Edicion.Model_Avion();
-        airport_p3.Presentation.Avion.Edicion.View_Avion VAvionE = new airport_p3.Presentation.Avion.Edicion.View_Avion();
-        airport_p3.Presentation.Avion.Edicion.Control_Avion CAvionE = new airport_p3.Presentation.Avion.Edicion.Control_Avion(MAvionE, VAvionE);
+        airport_p3.Presentation.Avion.Edicion.Model_Avion_Edicion MAvionE = new airport_p3.Presentation.Avion.Edicion.Model_Avion_Edicion();
+        airport_p3.Presentation.Avion.Edicion.View_Avion_Edicion VAvionE = new airport_p3.Presentation.Avion.Edicion.View_Avion_Edicion();
+        airport_p3.Presentation.Avion.Edicion.Control_Avion_Edicion CAvionE = new airport_p3.Presentation.Avion.Edicion.Control_Avion_Edicion(MAvionE, VAvionE);
         EDICION_Control_Avion = CAvionE;
         
         
@@ -82,11 +82,15 @@ public class Airport_P3 {
         airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado CFormaPagoL = new airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado(MFormaPagoL, VFormaPagoL);
         LISTADO_Control_FormaPago = CFormaPagoL;
         
-        /*ListadoTiquete*/
+   
         
         
    
-        
+        /*ListadoVuelo*/
+        airport_p3.Presentation.Vuelo.Listado.Model_Vuelo MVuelo = new airport_p3.Presentation.Vuelo.Listado.Model_Vuelo();
+        airport_p3.Presentation.Vuelo.Listado.View_Vuelo VVuelo = new airport_p3.Presentation.Vuelo.Listado.View_Vuelo();
+        airport_p3.Presentation.Vuelo.Listado.Control_Vuelo CVuelo = new airport_p3.Presentation.Vuelo.Listado.Control_Vuelo(MVuelo, VVuelo);
+        LISTADO_Control_Vuelo = CVuelo;
         
         
         
@@ -155,28 +159,50 @@ public class Airport_P3 {
         airport_p3.Presentation.Usuario.Listado.View_Usuario VUsuario = new airport_p3.Presentation.Usuario.Listado.View_Usuario();
         airport_p3.Presentation.Usuario.Listado.Control_Usuario CUsuario = new airport_p3.Presentation.Usuario.Listado.Control_Usuario(MUsuario, VUsuario);
         LISTADO_Control_Usuario = CUsuario;
+        
+         /*PANTALLADMINISTRADOR*/
 
-        airport_p3.Presentation.aplication.Model appModel = new airport_p3.Presentation.aplication.Model();
-        airport_p3.Presentation.aplication.View appView = new airport_p3.Presentation.aplication.View();
-        airport_p3.Presentation.aplication.Controller appController = new airport_p3.Presentation.aplication.Controller(appModel, appView);
-        appView.setVisible(true);
-
+        airport_p3.Presentation.aplication.Administrador.Model appModel = new airport_p3.Presentation.aplication.Administrador.Model();
+        airport_p3.Presentation.aplication.Administrador.View appViewA = new airport_p3.Presentation.aplication.Administrador.View();
+        airport_p3.Presentation.aplication.Administrador.Controller appControllerA = new airport_p3.Presentation.aplication.Administrador.Controller(appModel, appViewA);
+        CONTROL_PANTALLA_ADMINISTRADOR = appControllerA;
+        
+         /*PANTALLAuSUARIO*/
+        airport_p3.Presentation.aplication.Usuario.Model appModelU = new airport_p3.Presentation.aplication.Usuario.Model();
+        airport_p3.Presentation.aplication.Usuario.View appViewU = new airport_p3.Presentation.aplication.Usuario.View();
+        airport_p3.Presentation.aplication.Usuario.Controller appControllerU = new airport_p3.Presentation.aplication.Usuario.Controller(appModelU, appViewU);
+        CONTROL_PANTALLA_USUARIO = appControllerU;
+        
+        /*PANTALLAPRINCIPAL*/
+        airport_p3.Presentation.PantallaPrincipal.Model appModelP = new airport_p3.Presentation.PantallaPrincipal.Model();
+        airport_p3.Presentation.PantallaPrincipal.View appViewP = new airport_p3.Presentation.PantallaPrincipal.View();
+        airport_p3.Presentation.PantallaPrincipal.Controller appControllerP = new airport_p3.Presentation.PantallaPrincipal.Controller(appModelP, appViewP);
+        appViewP.setVisible(true);
+        
+//-------------------PantallaDMINISTRADOR--------------------------------------------------------------------------
         /*Pais*/
-        appView.panel.add(VPaisE);
-        appView.panel.add(VPaisL);
+        appViewA.panel.add(VPaisE);
+        appViewA.panel.add(VPaisL);
         
        /*Ciudad*/
-       appView.panel.add(VCiudadE);
-       appView.panel.add(VCiudadL);
+       appViewA.panel.add(VCiudadE);
+       appViewA.panel.add(VCiudadL);
        
        /*FormaPago*/
-       appView.panel.add(VFormaPagoE);
-       appView.panel.add(VFormaPagoL);
+       appViewA.panel.add(VFormaPagoE);
+       appViewA.panel.add(VFormaPagoL);
        
        /*Tiquete*/
-       appView.panel.add(VTiquete);
-     
-       
+       appViewA.panel.add(VTiquete);
+       /*Avion*/
+       appViewA.panel.add(VAvionE);
+       appViewA.panel.add(VAvion);
+     //-------------------PantallUSUARIO--------------------------------------------------------------------------
+        appViewU.panelU.add(VPaisL);
+        appViewU.panelU.add(VCiudadL);
+        appViewU.panelU.add(VVuelo);
+        appViewU.panelU.add(VFormaPagoL);
+        appViewU.panelU.add(VFechaVuelo);
        
        CTipoAvionE.show();
        cl.show();
@@ -189,8 +215,8 @@ public class Airport_P3 {
     public static airport_p3.Presentation.Ciudad.Edicion.Control_Ciudad_Edicion EDICION_Control_Ciudad;
     public static airport_p3.Presentation.Ciudad.Listado.Control_Ciudad_Listado LISTADO_Control_Ciudad;
 
-    public static airport_p3.Presentation.Avion.Edicion.Control_Avion EDICION_Control_Avion;
-    public static airport_p3.Presentation.Avion.Listado.Control_Avion LISTADO_Control_Avion;
+    public static airport_p3.Presentation.Avion.Edicion.Control_Avion_Edicion EDICION_Control_Avion;
+    public static airport_p3.Presentation.Avion.Listado.Control_Avion_Listado LISTADO_Control_Avion;
     
     public static airport_p3.Presentation.FormaPago.Edicion.Control_FormaPago_Edicion EDICION_Control_FormaPago;
     public static airport_p3.Presentation.FormaPago.Listado.Control_FormaPago_Listado LISTADO_Control_FormaPago;
@@ -207,4 +233,9 @@ public class Airport_P3 {
     public static airport_p3.Presentation.TipoAvion.Edicion.Control EDICION_Control_TipoAvion;
     public static airport_p3.Presentation.Usuario.Listado.Control_Usuario LISTADO_Control_Usuario;
     public static airport_p3.Presentation.Tiquete.Listado.Control_Tiquete_Listado LISTADO_Control_Tiquete;
+    
+    public static airport_p3.Presentation.Vuelo.Edicion.Control_VueloEdcion EDICION_Control_Vuelo;
+     public static airport_p3.Presentation.Vuelo.Listado.Control_Vuelo LISTADO_Control_Vuelo;
+    public static airport_p3.Presentation.aplication.Administrador.Controller CONTROL_PANTALLA_ADMINISTRADOR;
+    public static airport_p3.Presentation.aplication.Usuario.Controller CONTROL_PANTALLA_USUARIO;
 }

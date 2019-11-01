@@ -138,7 +138,7 @@ public class Tipoavion implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Tipoavion[ idTipoAvion=" + idTipoAvion + " ]";
+        return this.getMondelo();
     }
     
 }

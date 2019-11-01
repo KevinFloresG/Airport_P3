@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package airport_p3.Presentation.Vuelo.Listado;
+package airport_p3.Presentation.Vuelo.Edicion;
 
 import airport_p3.logica.Avion;
 import airport_p3.logica.Ciudad;
@@ -17,40 +17,50 @@ import java.util.Observer;
  *
  * @author Daniel
  */
-public class Model_Vuelo extends Observable {
+public class Model_VueloEdicion extends Observable {
 
+    Vuelo vuelo;
     List<Vuelo> VuelosDisponibles;
     List<Ciudad> CiudadesOrigen;
     List<Ciudad> CiudadesDestino;
     List<Avion> AvionesDisponibles;
-    Vuelo VueloFiltro;
 
-    public Model_Vuelo() {
+    public Model_VueloEdicion() {
         VuelosDisponibles = new ArrayList<>();
         CiudadesOrigen = new ArrayList<>();
         CiudadesDestino = new ArrayList<>();
         AvionesDisponibles = new ArrayList<>();
-        VueloFiltro = new Vuelo("");
+        vuelo = new Vuelo("");
     }
 
-    public Model_Vuelo(List<Vuelo> VuelosDisponibles, List<Ciudad> CiudadesOrigen, List<Ciudad> CiudadesDestino, List<Avion> AvionesDisponibles, Vuelo VueloFiltro) {
+    public Model_VueloEdicion(Vuelo vuelo, List<Vuelo> VuelosDisponibles, List<Ciudad> CiudadesOrigen, List<Ciudad> CiudadesDestino, List<Avion> AvionesDisponibles) {
+        this.vuelo = vuelo;
         this.VuelosDisponibles = VuelosDisponibles;
         this.CiudadesOrigen = CiudadesOrigen;
         this.CiudadesDestino = CiudadesDestino;
         this.AvionesDisponibles = AvionesDisponibles;
-        this.VueloFiltro = VueloFiltro;
     }
 
-    public Vuelo getVueloFiltro() {
-        return VueloFiltro;
+    public Vuelo getVuelo() {
+        return vuelo;
     }
 
-    public void setVueloFiltro(Vuelo VueloFiltro) {
-        this.VueloFiltro = VueloFiltro; 
+    public void setVuelo(Vuelo vuelo) {
+        this.vuelo = vuelo;
         this.setChanged();
         this.notifyObservers();
     }
-    
+
+    public List<Vuelo> getVuelosDisponibles() {
+        return VuelosDisponibles;
+    }
+
+    public void setVuelosDisponibles(List<Vuelo> VuelosDisponibles) {
+        this.VuelosDisponibles = VuelosDisponibles;
+        this.setChanged();
+        this.notifyObservers();
+    }
+
     public List<Ciudad> getCiudadesOrigen() {
         return CiudadesOrigen;
     }
@@ -77,16 +87,6 @@ public class Model_Vuelo extends Observable {
 
     public void setAvionesDisponibles(List<Avion> AvionesDisponibles) {
         this.AvionesDisponibles = AvionesDisponibles;
-        this.setChanged();
-        this.notifyObservers();
-    }
-
-    public List<Vuelo> getVuelosDisponibles() {
-        return VuelosDisponibles;
-    }
-
-    public void setVuelos(List<Vuelo> Vuelo) {
-        this.VuelosDisponibles = Vuelo;
         this.setChanged();
         this.notifyObservers();
     }
