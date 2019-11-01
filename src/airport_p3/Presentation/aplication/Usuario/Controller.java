@@ -4,10 +4,15 @@
  * and open the template in the editor.
  */
 package airport_p3.Presentation.aplication.Usuario;
+
+
 import airport_p3.Airport_P3;
+import  airport_p3.Presentation.aplication.Usuario.Model;
+import airport_p3.Presentation.aplication.Usuario.View;
+
 /**
  *
- * @author ESCINF
+ * @author Daniel
  */
 public class Controller {
     Model model;
@@ -19,32 +24,54 @@ public class Controller {
         view.setModel(model);
         view.setController(this);
     }
+    public void ListadoAvionShow(){
+        Airport_P3.LISTADO_Control_Avion.show();
+    }
+    
+    public void EdicionAvionShow(){
+        Airport_P3.EDICION_Control_Avion.show();
+    }
+     public void ListadoTiqueteShow(){
+        Airport_P3.LISTADO_Control_Tiquete.show();
+    }
+   
+    public void EdicionFormaPagoShow(){
+        Airport_P3.EDICION_Control_FormaPago.show();
+    }
+    
+    public void ListadoFormaPagoShow(){
+        Airport_P3.LISTADO_Control_FormaPago.show();
+    }
     
         public void ListadoCiudadShow(){
         Airport_P3.LISTADO_Control_Ciudad.show();
     }
 
-    
+    public void EdicionCiudadShow(){
+        Airport_P3.EDICION_Control_Ciudad.show();
+    }
     
     public void ListadoPaisShow(){
          Airport_P3.LISTADO_Control_Pais.show();
     }
 
-    
-    public void ListadoVueloShow(){
-        Airport_P3.LISTADO_Control_Vuelo.show();
-    }
-
-    public void ListadoFechaVueloShow(){
-        Airport_P3.LISTADO_Control_FechaVuelo.show();
+    public void EdicionPaisShow(){
+        Airport_P3.EDICION_Control_Pais.show();
     }
     
-       public void ListadoUsuarioShow(){
-        //Airport_P3.LISTADO_Control_Usuario.show();
+  public void show() {
+        
+    view.setVisible(true);
     }
-
-    public void show() {
-       view.setVisible(true);
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+

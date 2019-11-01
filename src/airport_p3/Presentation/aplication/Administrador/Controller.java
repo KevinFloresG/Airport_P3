@@ -5,6 +5,7 @@
  */
 package airport_p3.Presentation.aplication.Administrador;
 
+import airport_p3.Presentation.aplication.*;
 import airport_p3.Airport_P3;
 import  airport_p3.Presentation.aplication.Administrador.Model;
 import airport_p3.Presentation.aplication.Administrador.View;
@@ -23,6 +24,24 @@ public class Controller {
         view.setModel(model);
         view.setController(this);
     }
+    public void ListadoAvionShow(){
+        Airport_P3.LISTADO_Control_Avion.show();
+    }
+    
+    public void EdicionAvionShow(){
+        Airport_P3.EDICION_Control_Avion.show();
+    }
+     public void ListadoTiqueteShow(){
+        Airport_P3.LISTADO_Control_Tiquete.show();
+    }
+   
+    public void EdicionFormaPagoShow(){
+        Airport_P3.EDICION_Control_FormaPago.show();
+    }
+    
+    public void ListadoFormaPagoShow(){
+        Airport_P3.LISTADO_Control_FormaPago.show();
+    }
     
         public void ListadoCiudadShow(){
         Airport_P3.LISTADO_Control_Ciudad.show();
@@ -40,14 +59,7 @@ public class Controller {
         Airport_P3.EDICION_Control_Pais.show();
     }
     
-    public void ListadoVueloShow(){
-        Airport_P3.LISTADO_Control_Vuelo.show();
-    }
-
-    public void EdicionVueloShow() {
-        Airport_P3.EDICION_Control_Vuelo.show(); }
-
-    public void show() {
+  public void show() {
         
     view.setVisible(true);
     }

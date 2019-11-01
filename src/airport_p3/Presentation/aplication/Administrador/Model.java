@@ -5,6 +5,7 @@
  */
 package airport_p3.Presentation.aplication.Administrador;
 
+import airport_p3.Presentation.aplication.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,6 +18,7 @@ public class Model extends Observable{
     public Model() {
     }
 
+    @Override
     public void addObserver(Observer o){
         super.addObserver(o);
         this.setChanged();

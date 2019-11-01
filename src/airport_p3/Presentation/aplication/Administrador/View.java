@@ -5,13 +5,10 @@
  */
 package airport_p3.Presentation.aplication.Administrador;
 
-import airport_p3.Presentation.aplication.Administrador.Model;
-import airport_p3.Presentation.aplication.Administrador.Controller;
+import airport_p3.Presentation.aplication.*;
 import java.awt.Color;
-import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,8 +22,7 @@ public class View extends javax.swing.JFrame implements Observer {
     public View() {
         initComponents();
         this.getContentPane().setBackground(Color.GREEN);
-        //Image icon = new ImageIcon(getClass().getResource("C:\\Users\\Daniel\\Desktop\\P_III\\Airport_P3\\src/logo2.png")).getImage();
-        //this.setIconImage(icon);
+        this.setTitle("Administrativo");
     }
 
     /**
@@ -39,9 +35,6 @@ public class View extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         sexo = new javax.swing.ButtonGroup();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         panel = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -52,20 +45,21 @@ public class View extends javax.swing.JFrame implements Observer {
         edicionCiudad = new javax.swing.JMenu();
         CiudadEdicion = new javax.swing.JMenuItem();
         listadoCiudad = new javax.swing.JMenuItem();
-        MenuVuelo = new javax.swing.JMenu();
-        EdicionVuelo = new javax.swing.JMenuItem();
-        MenuItemListado = new javax.swing.JMenuItem();
-
-        jMenu2.setText("jMenu2");
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
+        jMenu2 = new javax.swing.JMenu();
+        EdicionFormaPago = new javax.swing.JMenuItem();
+        ListadoFormaPago = new javax.swing.JMenuItem();
+        Tiquete = new javax.swing.JMenu();
+        ListadoTiquete = new javax.swing.JMenuItem();
+        Avion = new javax.swing.JMenu();
+        EdicionAvion = new javax.swing.JMenuItem();
+        ListadoAvion = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIPE");
         setBackground(new java.awt.Color(0, 255, 0));
         setMinimumSize(new java.awt.Dimension(361, 215));
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -77,6 +71,8 @@ public class View extends javax.swing.JFrame implements Observer {
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 419, Short.MAX_VALUE)
         );
+
+        getContentPane().add(panel);
 
         jMenu1.setText("File");
 
@@ -130,77 +126,107 @@ public class View extends javax.swing.JFrame implements Observer {
 
         jMenuBar1.add(edicionCiudad);
 
-        MenuVuelo.setText("Vuelo");
+        jMenu2.setText("Forma de Pago");
 
-        EdicionVuelo.setText("Edicion");
-        EdicionVuelo.addActionListener(new java.awt.event.ActionListener() {
+        EdicionFormaPago.setText("Edicion");
+        EdicionFormaPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EdicionVueloActionPerformed(evt);
+                EdicionFormaPagoActionPerformed(evt);
             }
         });
-        MenuVuelo.add(EdicionVuelo);
+        jMenu2.add(EdicionFormaPago);
 
-        MenuItemListado.setText("Listado");
-        MenuItemListado.addActionListener(new java.awt.event.ActionListener() {
+        ListadoFormaPago.setText("Listado");
+        ListadoFormaPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemListadoActionPerformed(evt);
+                ListadoFormaPagoActionPerformed(evt);
             }
         });
-        MenuVuelo.add(MenuItemListado);
+        jMenu2.add(ListadoFormaPago);
 
-        jMenuBar1.add(MenuVuelo);
+        jMenuBar1.add(jMenu2);
+
+        Tiquete.setText("Tiquete");
+
+        ListadoTiquete.setText("Listado");
+        ListadoTiquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoTiqueteActionPerformed(evt);
+            }
+        });
+        Tiquete.add(ListadoTiquete);
+
+        jMenuBar1.add(Tiquete);
+
+        Avion.setText("Avion");
+
+        EdicionAvion.setText("Edicion");
+        EdicionAvion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EdicionAvionActionPerformed(evt);
+            }
+        });
+        Avion.add(EdicionAvion);
+
+        ListadoAvion.setText("Listado");
+        ListadoAvion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoAvionActionPerformed(evt);
+            }
+        });
+        Avion.add(ListadoAvion);
+
+        jMenuBar1.add(Avion);
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void listadoCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoCiudadActionPerformed
-        controller.ListadoCiudadShow();
-    }//GEN-LAST:event_listadoCiudadActionPerformed
-
-    private void CiudadEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiudadEdicionActionPerformed
-        controller.EdicionCiudadShow();
-    }//GEN-LAST:event_CiudadEdicionActionPerformed
-
-    private void listadoPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoPaisActionPerformed
-        controller.ListadoPaisShow();
-    }//GEN-LAST:event_listadoPaisActionPerformed
 
     private void edicionPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicionPaisActionPerformed
         controller.EdicionPaisShow();
     }//GEN-LAST:event_edicionPaisActionPerformed
 
+    private void listadoPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoPaisActionPerformed
+        controller.ListadoPaisShow();
+    }//GEN-LAST:event_listadoPaisActionPerformed
+
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void MenuItemListadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemListadoActionPerformed
-        controller.ListadoVueloShow();// TODO add your handling code here:
-    }//GEN-LAST:event_MenuItemListadoActionPerformed
+    private void CiudadEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CiudadEdicionActionPerformed
+        controller.EdicionCiudadShow();
+    }//GEN-LAST:event_CiudadEdicionActionPerformed
 
-    private void EdicionVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdicionVueloActionPerformed
-       controller.EdicionVueloShow(); // TODO add your handling code here:
-    }//GEN-LAST:event_EdicionVueloActionPerformed
+    private void listadoCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoCiudadActionPerformed
+        controller.ListadoCiudadShow();
+    }//GEN-LAST:event_listadoCiudadActionPerformed
+
+    private void EdicionFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdicionFormaPagoActionPerformed
+        controller.EdicionFormaPagoShow();
+    }//GEN-LAST:event_EdicionFormaPagoActionPerformed
+
+    private void ListadoFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoFormaPagoActionPerformed
+        controller.ListadoFormaPagoShow();
+    }//GEN-LAST:event_ListadoFormaPagoActionPerformed
+
+    private void ListadoTiqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoTiqueteActionPerformed
+        controller.ListadoTiqueteShow();
+    }//GEN-LAST:event_ListadoTiqueteActionPerformed
+
+    private void EdicionAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdicionAvionActionPerformed
+       controller.EdicionAvionShow();
+    }//GEN-LAST:event_EdicionAvionActionPerformed
+
+    private void ListadoAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoAvionActionPerformed
+       controller.ListadoAvionShow();
+    }//GEN-LAST:event_ListadoAvionActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-      
-    
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -227,29 +253,34 @@ public class View extends javax.swing.JFrame implements Observer {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new View().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Avion;
     private javax.swing.JMenuItem CiudadEdicion;
-    private javax.swing.JMenuItem EdicionVuelo;
-    private javax.swing.JMenuItem MenuItemListado;
-    private javax.swing.JMenu MenuVuelo;
+    private javax.swing.JMenuItem EdicionAvion;
+    private javax.swing.JMenuItem EdicionFormaPago;
+    private javax.swing.JMenuItem ListadoAvion;
+    private javax.swing.JMenuItem ListadoFormaPago;
+    private javax.swing.JMenuItem ListadoTiquete;
     private javax.swing.JMenu Pais;
+    private javax.swing.JMenu Tiquete;
     private javax.swing.JMenu edicionCiudad;
     private javax.swing.JMenuItem edicionPais;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem listadoCiudad;
     private javax.swing.JMenuItem listadoPais;
     public javax.swing.JDesktopPane panel;
@@ -279,7 +310,5 @@ public class View extends javax.swing.JFrame implements Observer {
     public void setController(Controller controller) {
         this.controller = controller;
     }
-
-    
 
 }

@@ -166,6 +166,7 @@ public class Airport_P3 {
         airport_p3.Presentation.aplication.Administrador.View appViewA = new airport_p3.Presentation.aplication.Administrador.View();
         airport_p3.Presentation.aplication.Administrador.Controller appControllerA = new airport_p3.Presentation.aplication.Administrador.Controller(appModel, appViewA);
         CONTROL_PANTALLA_ADMINISTRADOR = appControllerA;
+//        appViewA.setVisible(true);
         
          /*PANTALLAuSUARIO*/
         airport_p3.Presentation.aplication.Usuario.Model appModelU = new airport_p3.Presentation.aplication.Usuario.Model();
@@ -198,14 +199,26 @@ public class Airport_P3 {
        appViewA.panel.add(VAvionE);
        appViewA.panel.add(VAvion);
      //-------------------PantallUSUARIO--------------------------------------------------------------------------
-        appViewU.panelU.add(VPaisL);
-        appViewU.panelU.add(VCiudadL);
-        appViewU.panelU.add(VVuelo);
-        appViewU.panelU.add(VFormaPagoL);
-        appViewU.panelU.add(VFechaVuelo);
+        /*Pais*/
+        appViewU.panel.add(VPaisE);
+        appViewU.panel.add(VPaisL);
+        
+       /*Ciudad*/
+       appViewU.panel.add(VCiudadE);
+       appViewU.panel.add(VCiudadL);
        
-       CTipoAvionE.show();
-       cl.show();
+       /*FormaPago*/
+       appViewU.panel.add(VFormaPagoE);
+       appViewU.panel.add(VFormaPagoL);
+       
+       /*Tiquete*/
+       appViewU.panel.add(VTiquete);
+       /*Avion*/
+       appViewU.panel.add(VAvionE);
+       appViewU.panel.add(VAvion);
+       
+//       CTipoAvionE.show();
+//       cl.show();
 
     }
 
