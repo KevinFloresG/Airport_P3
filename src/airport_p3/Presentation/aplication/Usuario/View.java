@@ -53,6 +53,8 @@ public class View extends javax.swing.JFrame implements Observer {
         EdicionAvion = new javax.swing.JMenuItem();
         ListadoAvion = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        FechaVuelo = new javax.swing.JMenu();
+        ListadoFechaVuelo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIPE");
@@ -178,6 +180,18 @@ public class View extends javax.swing.JFrame implements Observer {
         jMenuBar1.add(Avion);
         jMenuBar1.add(jMenu4);
 
+        FechaVuelo.setText("Fecha Vuelo");
+
+        ListadoFechaVuelo.setText("Listado");
+        ListadoFechaVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoFechaVueloActionPerformed(evt);
+            }
+        });
+        FechaVuelo.add(ListadoFechaVuelo);
+
+        jMenuBar1.add(FechaVuelo);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -222,6 +236,10 @@ public class View extends javax.swing.JFrame implements Observer {
     private void ListadoAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoAvionActionPerformed
        controller.ListadoAvionShow();
     }//GEN-LAST:event_ListadoAvionActionPerformed
+
+    private void ListadoFechaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoFechaVueloActionPerformed
+        controller.ListadoFechaVueloShow();
+    }//GEN-LAST:event_ListadoFechaVueloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,7 +294,9 @@ public class View extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenuItem CiudadEdicion;
     private javax.swing.JMenuItem EdicionAvion;
     private javax.swing.JMenuItem EdicionFormaPago;
+    private javax.swing.JMenu FechaVuelo;
     private javax.swing.JMenuItem ListadoAvion;
+    private javax.swing.JMenuItem ListadoFechaVuelo;
     private javax.swing.JMenuItem ListadoFormaPago;
     private javax.swing.JMenuItem ListadoTiquete;
     private javax.swing.JMenu Pais;

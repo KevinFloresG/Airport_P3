@@ -7,8 +7,6 @@ package airport_p3.Presentation.aplication.Usuario;
 
 
 import airport_p3.Airport_P3;
-import  airport_p3.Presentation.aplication.Usuario.Model;
-import airport_p3.Presentation.aplication.Usuario.View;
 
 /**
  *
@@ -23,6 +21,10 @@ public class Controller {
         this.view = view;
         view.setModel(model);
         view.setController(this);
+    }
+    
+    public void ListadoFechaVueloShow(){
+        Airport_P3.LISTADO_Control_FechaVuelo.show();
     }
     public void ListadoAvionShow(){
         Airport_P3.LISTADO_Control_Avion.show();

@@ -47,6 +47,7 @@ public class View_Pais_Listado extends javax.swing.JInternalFrame implements Obs
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Listado");
+        setEnabled(false);
         setMinimumSize(new java.awt.Dimension(361, 215));
 
         jLabel2.setText("Nombre");

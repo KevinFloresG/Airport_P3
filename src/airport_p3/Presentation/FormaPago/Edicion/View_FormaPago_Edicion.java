@@ -36,7 +36,7 @@ public class View_FormaPago_Edicion extends javax.swing.JInternalFrame implement
         modificar = new javax.swing.JButton();
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         idTipoAvion.setText("Id Forma de pago: ");
 

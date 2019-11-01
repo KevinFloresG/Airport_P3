@@ -89,7 +89,7 @@ public class View_VueloEdiicion extends javax.swing.JInternalFrame implements Ob
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jLabel7.setText("Duracion");
 

@@ -7,7 +7,6 @@ package airport_p3.Presentation.FechaVuelo.Listado;
 
 import airport_p3.Airport_P3;
 import airport_p3.datos.Dao_FechaVuelo;
-import airport_p3.datos.Dao_Vuelo;
 import airport_p3.logica.Vuelo;
 import java.sql.SQLException;
 import java.util.Date;
@@ -18,51 +17,39 @@ import java.util.Date;
  */
 public class Control_FechaVuelo {
 
-    Model_FechaVuelo model_avionE;
-    View_FechaVuelo view_avionE;
+    Model_FechaVuelo model;
+    View_FechaVuelo view;
     Dao_FechaVuelo daoFechaVuelo;
 
-    public Control_FechaVuelo(Model_FechaVuelo model_avionE, View_FechaVuelo view_avionE) {
-        this.model_avionE = model_avionE;
-        this.view_avionE = view_avionE;
+    public Control_FechaVuelo(Model_FechaVuelo model, View_FechaVuelo view) {
         daoFechaVuelo = new Dao_FechaVuelo();
-        view_avionE.setModel(model_avionE);
-        view_avionE.setController(this);
+        this.model = model;
+        this.view = view;
+        view.setModel(model);
+        view.setController(this);
     }
 
-    
-    public void buscar(Vuelo vuelo,Date fecha) throws SQLException, Exception{
-        model_avionE.getfiltro().setIdFechaVuelo("");
-        model_avionE.getfiltro().setVuelo(vuelo);
-        model_avionE.getfiltro().setFecha(fecha);
+    public void buscar(String idVuelo) throws SQLException, Exception{
+        model.getFiltro().setIdFechaVuelo("");
+        model.getFiltro().setVuelo(new Vuelo());
+        model.getFiltro().getVuelo().setIdVuelo(idVuelo);
+//        model.getFiltro().setFecha(fecha);
         this.refrescar();
     }
 
     public void refrescar() throws SQLException, Exception{
-        model_avionE.setFechavueloDisponibles(daoFechaVuelo.search(model_avionE.getfiltro()));
+//        model.setCiudades(daoCiudad.search(model.getFiltro()));
     }
 
     public void editar(int row) {
-        Airport_P3.EDICION_Control_Ciudad.consultar(model_avionE.getVuelosDisponibles().get(row).getIdVuelo());
+//        Airport_P3.EDICION_Control_Ciudad.consultar(model.getCiudades().get(row).getIdCiudad());
     }
 
     public void show() {
-        view_avionE.setVisible(true);
+        view.setVisible(true);
     }
 
     public void hide() {
-        view_avionE.setVisible(false);
+        view.setVisible(false);
     }
-
-        
-    public void MostrarTodos(){
-        try{
-            model_avionE.setFechavueloDisponibles(daoFechaVuelo.getAll());
-        }
-        catch (Exception ex) {
-                view_avionE.interruption("Se encuentra vacia.");
-            }
-    }
-
-    
 }

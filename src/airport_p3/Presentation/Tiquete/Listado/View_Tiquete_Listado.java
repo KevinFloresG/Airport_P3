@@ -43,7 +43,7 @@ public class View_Tiquete_Listado extends javax.swing.JInternalFrame implements 
         MostrarTodos = new javax.swing.JButton();
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("ListadoTiquetes");
 
         jLabel3.setText("Numero de reserva");

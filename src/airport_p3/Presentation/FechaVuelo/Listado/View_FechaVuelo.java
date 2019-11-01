@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  *
  * @author Daniel
  */
-public class View_FechaVuelo extends javax.swing.JFrame implements Observer {
+public class View_FechaVuelo extends javax.swing.JInternalFrame implements Observer {
 
     /**
      * Creates new form View_FechaVuelo
@@ -80,8 +80,10 @@ public class View_FechaVuelo extends javax.swing.JFrame implements Observer {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jInternalFrame1.setClosable(true);
         jInternalFrame1.setVisible(true);
 
         TableFechaVuelo.setModel(new javax.swing.table.DefaultTableModel(
@@ -183,35 +185,35 @@ public class View_FechaVuelo extends javax.swing.JFrame implements Observer {
                     .addComponent(ButtonBuscarTodos))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarTodosActionPerformed
-        controller.MostrarTodos();        // TODO add your handling code here:
+//        controller.MostrarTodos();        // TODO add your handling code here:
     }//GEN-LAST:event_ButtonBuscarTodosActionPerformed
 
     private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
  try {
-          controller.buscar(toFechaVuelo().getVuelo(),toFechaVuelo().getFecha());
+//          controller.buscar(toFechaVuelo().getVuelo(),toFechaVuelo().getFecha());
         } catch (Exception ex) {
             Logger.getLogger(View_FechaVuelo.class.getName()).log(Level.SEVERE, null, ex);
         }        // TODO add your handling code here:
@@ -280,14 +282,14 @@ public class View_FechaVuelo extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object o1) {
-        this.TableFechaVuelo.setModel(new TableModel_FechaVuelo(model.getFechavueloDisponibles()));
+//        this.TableFechaVuelo.setModel(new TableModel_FechaVuelo(model.getFechavueloDisponibles()));
         this.TableFechaVuelo.setRowHeight(30);
-        this.renderVuelo(model.getfiltro());
+//        this.renderVuelo(model.getfiltro());
        // this.TextFieldFecha.setText(convertirFechaString(model.getfiltro().getFecha()));
     }
 
      public void renderVuelo(Fechavuelo c) {
-        this.jComboBox1.setModel(new DefaultComboBoxModel<Vuelo>(model.getVuelosDisponibles().toArray(new Vuelo[0])));
+//        this.jComboBox1.setModel(new DefaultComboBoxModel<Vuelo>(model.getVuelosDisponibles().toArray(new Vuelo[0])));
         this.jComboBox1.setSelectedItem(c.getVuelo());
     }
     

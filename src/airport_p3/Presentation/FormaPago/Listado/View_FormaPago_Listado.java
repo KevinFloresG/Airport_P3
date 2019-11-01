@@ -40,7 +40,7 @@ public class View_FormaPago_Listado extends javax.swing.JInternalFrame implement
         tabla = new javax.swing.JTable();
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("ListadoFormaPago");
 
         jLabel3.setText("Nombre");

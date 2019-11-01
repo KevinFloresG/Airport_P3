@@ -130,6 +130,21 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
         </Menu>
+        <Menu class="javax.swing.JMenu" name="FechaVuelo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fecha Vuelo"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoFechaVuelo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoFechaVueloActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

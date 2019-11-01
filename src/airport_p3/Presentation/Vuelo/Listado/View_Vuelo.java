@@ -58,7 +58,7 @@ public class View_Vuelo  extends javax.swing.JInternalFrame implements Observer 
 
         jMenu1.setText("jMenu1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         LabelNumero.setText("Numero.");
 

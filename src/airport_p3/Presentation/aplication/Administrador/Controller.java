@@ -25,38 +25,38 @@ public class Controller {
         view.setController(this);
     }
     public void ListadoAvionShow(){
-        Airport_P3.LISTADO_Control_Avion.show();
+        Airport_P3.LISTADO_Control_Avion_Admi.show();
     }
     
     public void EdicionAvionShow(){
-        Airport_P3.EDICION_Control_Avion.show();
+        Airport_P3.EDICION_Control_Avion_Admi.show();
     }
      public void ListadoTiqueteShow(){
-        Airport_P3.LISTADO_Control_Tiquete.show();
+        Airport_P3.LISTADO_Control_Tiquete_Admi.show();
     }
    
     public void EdicionFormaPagoShow(){
-        Airport_P3.EDICION_Control_FormaPago.show();
+        Airport_P3.EDICION_Control_FormaPago_Admi.show();
     }
     
     public void ListadoFormaPagoShow(){
-        Airport_P3.LISTADO_Control_FormaPago.show();
+        Airport_P3.LISTADO_Control_FormaPago_Admi.show();
     }
     
         public void ListadoCiudadShow(){
-        Airport_P3.LISTADO_Control_Ciudad.show();
+        Airport_P3.LISTADO_Control_Ciudad_Admi.show();
     }
 
     public void EdicionCiudadShow(){
-        Airport_P3.EDICION_Control_Ciudad.show();
+        Airport_P3.EDICION_Control_Ciudad_Admi.show();
     }
     
     public void ListadoPaisShow(){
-         Airport_P3.LISTADO_Control_Pais.show();
+         Airport_P3.LISTADO_Control_Pais_Admi.show();
     }
 
     public void EdicionPaisShow(){
-        Airport_P3.EDICION_Control_Pais.show();
+        Airport_P3.EDICION_Control_Pais_Admi.show();
     }
     
   public void show() {
